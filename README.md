@@ -4,7 +4,7 @@
 
 # Welcome to the ESP32 IoT Workshop
 
-IoT workshop based on ES32, a DHT11/22 and NeoPixel RGB LED
+IoT workshop based on ESP32, a DHT11/22 and NeoPixel RGB LED
 
 # Real World IoT with the ESP32
 
