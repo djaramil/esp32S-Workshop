@@ -2,11 +2,11 @@
 [Home](/README.md) - [Part 1](/en/part1/README.md) - [Part 2](/en/part2/README.md) - [Part 3](/en/part3/README.md) - [Part 4](/en/part4/README.md)
 ***
 
-# Welcome to the ESP8266 IoT Workshop
+# Welcome to the ESP32 IoT Workshop
 
-IoT workshop based on ESP8266, a DHT11/22 and NeoPixel RGB LED
+IoT workshop based on ES32, a DHT11/22 and NeoPixel RGB LED
 
-# Real World IoT with the ESP8266
+# Real World IoT with the ESP32
 
 ## Stream Environmental Conditions to Watson IoT and Analyse IoT Sensor data
 
