@@ -10,11 +10,11 @@ Before you can start working on this workshop you need to have some prerequisite
 
 - practical [**Prerequisite Install and setup**](PREREQ.md)
 
-## Introduction to the ESP32 - 10 min
+## Introduction to the ESP32S - 10 min
 
-- practical [**First App on ESP32**](FIRSTAPP.md)
+- practical [**First App on ESP32S**](FIRSTAPP.md)
 
-## ESP32 WiFi connectivity - 15 min
+## ESP32S WiFi connectivity - 15 min
 
 - practical [**WIFI scanning and connectivity**](WIFI.md)
 

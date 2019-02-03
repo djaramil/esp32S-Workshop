@@ -4,28 +4,28 @@
 **Part 1** - [Setup](PREREQ.md) - [First App](FIRSTAPP.md) - [WIFI](WIFI.md) - [LED](LED.md) - [**DHT**](DHT.md) - [Cloud](IOTCLOUD.md)
 ***
 
-# Reading the DHT Sensor from the ESP8266
+# Reading the DHT Sensor from the ESP32S
 
 The DHT11 or DHT22 sensors add the ability to sense temperature and humidity.  The DHT22 is a more accurate version of the DHT11.
 
 ## Lab Objectives
 
-In this lab you will learn how to connect the DHT temperature and humidity sensor to the ESP8266 board and how to access data from the sensor.  You will learn:
+In this lab you will learn how to connect the DHT temperature and humidity sensor to the ESP32S board and how to access data from the sensor.  You will learn:
 
-- The electrical connections needed to connect the DHT sensor to the ESP8266
+- The electrical connections needed to connect the DHT sensor to the ESP32S
 - The library used to access the features of the sensor
 - How to use the library functions to add a DHT sensor to an application
 
 ### Step 1 - Installing the Library
 
-To access the DHT sensors from the ESP8266 we need to add 2 libraries to the sketch, so back in the Arduino IDE access the library manager.  *Sketch* -> *Include Library* -> *Manage Libraries...*.  
+To access the DHT sensors from the ESP32S we need to add 2 libraries to the sketch, so back in the Arduino IDE access the library manager.  *Sketch* -> *Include Library* -> *Manage Libraries...*.  
 
 - Once in the Library Manager search for DHT.  The top entry should be the Adafruit **DHT sensor library** which you should install.
 - Adafruit have introduced a unified model to many of their sensor libraries, including the DHT library, and to use them you need to install the **Adafruit Unified Sensor** library, so search for it, it will appear at the bottom of the list, then install it.
 
 When both of the libraries have been installed you can close the library manager.
 
-### Step 2 - Connect the DHT sensor to your ESP8266 board
+### Step 2 - Connect the DHT sensor to your ESP32S board
 
 Disconnect the ESP*266 board from your laptop/workstation before connecting the DHT sensor.
 
@@ -46,7 +46,7 @@ If you have a DHT mounted on a module then you need to check the pinout, usually
 
 To see how to use the DHT sensor there is an example sketch.  *File* -> *Examples* -> *DHT Sensor Library* -> *DHTtester*.  You need to make a couple of changes before you can run the sketch:
 
-1. Update the pin to the correct GPIO pin on the ESP8266 corresponding to D2 on the NodeMCU board.  The [pinout](https://circuits4you.com/2017/12/31/nodemcu-pinout/) diagram will tell you that you need GPIO 4.
+1. Update the pin to the correct GPIO pin on the ESP32S corresponding to D2 on the NodeMCU board.  The [pinout](https://circuits4you.com/2017/12/31/nodemcu-pinout/) diagram will tell you that you need GPIO 4.
 2. Set the DHT type.  You are using DHT11 sensors, so uncomment the DHT11 line and comment out the DHT22 line.
 
 When you save the sketch you will need to save it to your Arduino directory as you can't modify the example source.  Once saved you can now compile and upload the sketch.  This sketch uses Serial output to print out the values read, so you will need to open the Serial monitor and set the baud rate to match the Serial.begin() line in the sketch = 9600.

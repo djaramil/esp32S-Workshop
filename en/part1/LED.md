@@ -4,36 +4,36 @@
 **Part 1** - [Setup](PREREQ.md) - [First App](FIRSTAPP.md) - [WIFI](WIFI.md) - [**LED**](LED.md) - [DHT](DHT.md) - [Cloud](IOTCLOUD.md)
 ***
 
-# Controlling the RGB LED from the ESP8266
+# Controlling the RGB LED from the ESP32S
 
 ## Lab Objectives
 
-In this Lab you will connect the NeoPixel LED and learn how to control it from the ESP8266.  You will learn:
+In this Lab you will connect the NeoPixel LED and learn how to control it from the ESP32S.  You will learn:
 
-- The electrical connections of the LED and how to connect to the ESP8266
+- The electrical connections of the LED and how to connect to the ESP32S
 - The library used to control the neopixel
 - How to add new libraries to the Arduino IDE
 - How to use the neopixel Library and access documentation for additional features
 
 ## Introduction
 
-During the last practical we used the ESPWiFi library that was installed as part of the plugin but now we want to control a neopixel RGB LED that we will connect to the ESP8266.  One of the advantages of using Arduino is that there are many libraries available, so most common hardware will usually have an Arduino library available, so you won't need to implement the low-level control protocol for a device.
+During the last practical we used the ESPWiFi library that was installed as part of the plugin but now we want to control a neopixel RGB LED that we will connect to the ESP32S.  One of the advantages of using Arduino is that there are many libraries available, so most common hardware will usually have an Arduino library available, so you won't need to implement the low-level control protocol for a device.
 
-You need to be careful to ensure that any library you choose supports the hardware you are running on.  Initially the Arduino platform was created around AVR microprocessors and many libraries were written to directly interact with AVR processors, so are incompatible when targeting a different processor.  Looking at the Arduino ESP8266 documentation there is a [list of libraries](http://arduino-esp8266.readthedocs.io/en/latest/libraries.html#other-libraries-not-included-with-the-ide) known to work with ESP8266.
+You need to be careful to ensure that any library you choose supports the hardware you are running on.  Initially the Arduino platform was created around AVR microprocessors and many libraries were written to directly interact with AVR processors, so are incompatible when targeting a different processor.  Looking at the Arduino ESP32S documentation there is a [list of libraries](http://arduino-esp8266.readthedocs.io/en/latest/libraries.html#other-libraries-not-included-with-the-ide) known to work with ESP32S.
 
 ### Step 1 - Adding a Library to the Arduino IDE
 
 Looking at the list, there is a compatible NeoPixel library available for the neopixel.  To install a library into the Arduino IDE you can use the Library Manager.  From the menu select *Sketch* -> *Include Library* -> *Manage Libraries...* to bring up the Library Manager.  In the search box enter NeoPixel to find libraries matching the search.  You can see there are a number of libraries available, but you want to find the Adafruit NeoPixel by Adafruit, then select the entry and click install to install the library. Once the library in installed click **close** to close the Library Manager.
 
-### Step 2 - Connecting the Neopixel to the ESP8266 board
+### Step 2 - Connecting the Neopixel to the ESP32S board
 
-Now you need to connect the NeoPixel to the ESP8266.  Before you start making any connections please disconnect the device from your laptop/workstation so there is no power getting to the device.  You should never make any connection changes when the device is powered on.
+Now you need to connect the NeoPixel to the ESP32S.  Before you start making any connections please disconnect the device from your laptop/workstation so there is no power getting to the device.  You should never make any connection changes when the device is powered on.
 
 Before making the connections we need to identify the 4 connecting pins coming out of the LED.  If you examine the rim of the pixel cover you will see that one side is flattened (this should be the opposite side from the shortest pin) - this pin next to the flattened side is the **Data Out** pin.  We will not be using this pin, as we only have a single pixel.  You can chain pixels together connecting the **Data Out** pin to the **Data In** pin of the next pixel in the chain.
 
 The shortest pin on the Pixel is the **Data In**
 The longest pin on the Pixel is **Ground**
-The remaining pin is **+'ve voltage**, which should be 5v, but it works with 3.3v that the ESP8266 board provides.
+The remaining pin is **+'ve voltage**, which should be 5v, but it works with 3.3v that the ESP32S board provides.
 
 So, with the shortest pin on the left and the flat side on the right the pinout is (left to right):
 
@@ -42,7 +42,7 @@ So, with the shortest pin on the left and the flat side on the right the pinout 
 - Gnd (longest pin)
 - Data Out (no connection)
 
-You need to connect the Data In, +'ve voltage and ground to the ESP8266 board as shown in the diagram.  Take care to ensure that the connections are as shown, as connecting the wrong pins can damage the ESP8266 board and/or the LED:
+You need to connect the Data In, +'ve voltage and ground to the ESP32S board as shown in the diagram.  Take care to ensure that the connections are as shown, as connecting the wrong pins can damage the ESP32S board and/or the LED:
 
 ![ModeMCU LED Wiring](../images/NodeMCU_LED_Wiring.jpg)
 
@@ -50,7 +50,7 @@ You need to connect the Data In, +'ve voltage and ground to the ESP8266 board as
 
 Once you have the connections made you can connect the board to your laptop.  Load the example sketch **strandtest** *File* -> *Examples* -> *AdaFruit Neopixel* -> *strandtest*.  You need to make a couple of changes to the example sketch:
 
-1. Change the PIN number to 5.  D1 on the NodeMCU board maps to GPIO5 on the ESP8266 processor - see the [pinout](https://circuits4you.com/2017/12/31/nodemcu-pinout/)
+1. Change the PIN number to 5.  D1 on the NodeMCU board maps to GPIO5 on the ESP32S processor - see the [pinout](https://circuits4you.com/2017/12/31/nodemcu-pinout/)
 2. Set the number of pixels to 1 in the strip definition line
 3. In the loop function comment out the 4 lines starting with **theatreChase** as these cause rapid flashing when only a single LED is connected, which is not pleasant to look at.
 
