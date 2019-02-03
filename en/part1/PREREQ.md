@@ -16,7 +16,7 @@ To be able to complete the workshop you need to purchase the required hardware a
 
 ### WiFi
 
-The ESP32S can connect to a 2.4GHz network supporting 802.11 b/g/n.  The ESP8266 will not work with 5GHz frequencies (802.11 ac).
+The ESP32S can connect to a 2.4GHz network supporting 802.11 b/g/n.  The ESP32S will not work with 5GHz frequencies (802.11 ac).
 
 As there is no ability to launch a browser on the ESP32S, so you cannot work with WiFi networks needing a browser to be able to enter credentials, which is a mechanism often used in public spaces, such as hotels.
 
@@ -48,7 +48,7 @@ You may need admin access to your workstation to be able to install the software
 
 If you are attending an IBM face-to-face workshop, then the boards you will be using are branded LoLin and use the CH340 USB to serial chip.
 
-You may need a driver for your OS to be able to communicate with the USB to serial CH340G chip used in the ESP8266 modules.  Do not plugin the device until you have installed the driver on Windows and Mac.  The drivers can be downloaded from :
+You may need a driver for your OS to be able to communicate with the USB to serial CH340G chip used in the ESP32S modules.  Do not plugin the device until you have installed the driver on Windows and Mac.  The drivers can be downloaded from :
 
 - [MacOS](http://www.wch.cn/download/CH341SER_MAC_ZIP.html) (This is the manufacturers web site, in Chinese, for the USB driver chip on the LoLin NodeNCU board - use Google Chrome to translate, or just click the download link to access the macOS driver).  After installing goto System Preferences -> Security and Privacy to allow the driver to be loaded.
   - Alternatively if you use [homebrew](https://brew.sh) you can install the driver using command
@@ -89,7 +89,7 @@ The workshop will use the Arduino IDE to create applications for the ESP32S modu
 
 ### Step 3 - Install the ESP32S Plugin for the Arduino IDE
 
-Out of the box the Arduino IDE does not support ESP8266 development.  You need to add a plugin to add support.  Launch the Arduino IDE then open up the preferences panel for the Arduino IDE:
+Out of the box the Arduino IDE does not support ESP32S development.  You need to add a plugin to add support.  Launch the Arduino IDE then open up the preferences panel for the Arduino IDE:
 
 - Linux : *File* -> *Preferences*
 - MacOS : *Arduino* -> *Preferences*
@@ -101,19 +101,19 @@ Select OK to close the preferences dialog.
 
 Note:  if you already have a URL configured, add a comma at the end and then add the new URL to the end.
 
-Select *Tools* -> *Board:* -> *Board Manager...* from the menu, then enter ESP in the search box.  This should reveal an item **esp32 by ESP32S community**.  Click inside the esp8266 box then press install to install the latest plugin.  Once installed close the board manager.
+Select *Tools* -> *Board:* -> *Board Manager...* from the menu, then enter ESP in the search box.  This should reveal an item **esp32 by ESP32S community**.  Click inside the ESP32S box then press install to install the latest plugin.  Once installed close the board manager.
 
 ### Step 4 - Install the filesystem upload tool for ESP32S
 
-The ESP32S has flash memory that can hold a filesystem.  There is a plugin for Arduino that allows you to generate a populated filesystem and upload it to the ESP32S board.  The plugin can be downloaded from [**here**](https://github.com/esp8266/arduino-esp8266fs-plugin/releases).  You need to create a tools directory within the sketch directory then extract the content there.
+The ESP32S has flash memory that can hold a filesystem.  There is a plugin for Arduino that allows you to generate a populated filesystem and upload it to the ESP32S board.  The plugin can be downloaded from [**here**](https://github.com/ESP32S/arduino-ESP32Sfs-plugin/releases).  You need to create a tools directory within the sketch directory then extract the content there.
 
 ![tools directory](../images/toolsDirectory.png)
 
  (*Note: you can find the sketch directory location from the preferences panel of the Arduino IDE*).  The default location of the sketch directory is:
 
-- Linux - **/home/< user name >/Arduino/tools/ESP8266FS**
-- MacOS - **/Users/< user name >/Documents/Arduino/tools/ESP8266FS**
-- Windows - **C:\Users\< user name >\Documents\Arduino\tools\ESP8266FS**
+- Linux - **/home/< user name >/Arduino/tools/ESP32SFS**
+- MacOS - **/Users/< user name >/Documents/Arduino/tools/ESP32SFS**
+- Windows - **C:\Users\< user name >\Documents\Arduino\tools\ESP32SFS**
 
 #### Step 5 - SSL utility to work with certificates
 
