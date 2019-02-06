@@ -12,7 +12,7 @@
 
 ## Creating the initial application - 15 min
 
-- practical [**Create ESP8266 application**](APP.md)
+- practical [**Create ESP32S application**](APP.md)
 
 ## Introduction to the MQTT protocol - 15 min
 

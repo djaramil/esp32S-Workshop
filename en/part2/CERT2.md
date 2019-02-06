@@ -21,7 +21,7 @@ The openssl tool must be used to generate the key and certificate, as in the pre
 ```bash
 openssl genrsa -aes256 -passout pass:password123 -out SecuredDev01_key.pem 2048
 
-openssl req -new -sha256 -subj "/C=GB/ST=DOR/L=Bournemouth/O=z53u40/OU=z53u40 Corporate/CN=d:ESP8266:dev01" -passin pass:password123 -key SecuredDev01_key.pem -out SecuredDev01_crt.csr
+openssl req -new -sha256 -subj "/C=GB/ST=DOR/L=Bournemouth/O=z53u40/OU=z53u40 Corporate/CN=d:ESP32S:dev01" -passin pass:password123 -key SecuredDev01_key.pem -out SecuredDev01_crt.csr
 
 openssl x509 -days 3650 -in SecuredDev01_crt.csr -out SecuredDev01_crt.pem -req -sha256 -CA rootCA_certificate.pem -passin pass:password123 -CAkey rootCA_key.pem -set_serial 131
 
@@ -30,9 +30,9 @@ openssl rsa -outform der -in SecuredDev01_key.pem -passin pass:password123 -out 
 openssl x509 -outform der -in SecuredDev01_crt.pem -out SecuredDev01_crt.der
 ```
 
-### Step 2 - Upload the certificate and key to the ESP8266 device
+### Step 2 - Upload the certificate and key to the ESP32S device
 
-You need to add the private key (SecuredDev01_key.key) and the certificate (SecuredDev01_crt.der) to the data folder inside the sketch folder then run the data uploader tool (*Tools* -> *ESP8266 Sketch Data Upload*) to install the certificates on the device filesystem.
+You need to add the private key (SecuredDev01_key.key) and the certificate (SecuredDev01_crt.der) to the data folder inside the sketch folder then run the data uploader tool (*Tools* -> *ESP32S Sketch Data Upload*) to install the certificates on the device filesystem.
 
 ### Step 3 - Modify the application to use the client certificate and key
 
@@ -106,7 +106,7 @@ The finished application should look like this:
 
 ```C++
 #include <FS.h>
-#include <ESP8266WiFi.h>
+#include <WiFi.h>
 #include <time.h>
 #include <Adafruit_NeoPixel.h>
 #include <DHT.h>
@@ -120,7 +120,7 @@ The finished application should look like this:
 // Watson IoT connection details
 #define MQTT_HOST "z53u40.messaging.internetofthings.ibmcloud.com"
 #define MQTT_PORT 8883
-#define MQTT_DEVICEID "d:z53u40:ESP8266:dev01"
+#define MQTT_DEVICEID "d:z53u40:ESP32S:dev01"
 #define MQTT_USER "use-token-auth"
 #define MQTT_TOKEN "password"
 #define MQTT_TOPIC "iot-2/evt/status/fmt/json"
@@ -193,7 +193,7 @@ void setup() {
   Serial.setTimeout(2000);
   while (!Serial) { }
   Serial.println();
-  Serial.println("ESP8266 Sensor Application");
+  Serial.println("ESP32S Sensor Application");
 
   // Start WiFi connection
   WiFi.mode(WIFI_STA);

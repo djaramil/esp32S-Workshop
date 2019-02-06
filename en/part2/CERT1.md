@@ -13,7 +13,7 @@ In this Lab you will modify MQTT to use a secure connection.  You will learn:
 - How to add SSL/TLS capability to the network connection that MQTT uses
 - How to generate certificates to enable secure connections using OpenSSL
 - How to add the certificates to the IBM Watson IoT Platform
-- How to add the certificate to the ESP8266 using part of the flash memory as a file system
+- How to add the certificate to the ESP32S using part of the flash memory as a file system
 - Basic operations of the SPIFFS file system
 
 ## Introduction
@@ -22,9 +22,9 @@ Having unsecured traffic for an IoT solution is not a good idea, so in this lab 
 
 When using SSL/TLS you can verify the certificate(s) presented by the server if you have the certificate of the Root Certificate Authority used to sign the server certificate.  Your Laptop will have common root CA certificates installed as part of the OS or browser so web traffic can be secured and the padlock on your browser can be shown.  However, you need to add any certificate to IoT devices if you want to verify server certificates.
 
-There is a limitation in the SSL/TLS library provided in the Arduino environment as part of the ESP8266 plugin.  This library will verify a server certificate, but not if the certificate chain contains intermediate certificates.  The Watson IoT Platform certificate is available on [this](https://console.bluemix.net/docs/services/IoT/reference/security/connect_devices_apps_gw.html#connect_devices_apps_gw) page, but includes a chain of certificates, which the ESP8266 library cannot verify.
+There is a limitation in the SSL/TLS library provided in the Arduino environment as part of the ESP32S plugin.  This library will verify a server certificate, but not if the certificate chain contains intermediate certificates.  The Watson IoT Platform certificate is available on [this](https://console.bluemix.net/docs/services/IoT/reference/security/connect_devices_apps_gw.html#connect_devices_apps_gw) page, but includes a chain of certificates, which the ESP32S library cannot verify.
 
-The Watson IoT platform does allow you to replace the certificates used for MQTT traffic, so in this exercise you will generate your own self-signed certificates, add them to the Watson IoT platform and the ESP8266 code, to enable a SSL/TLS connection with the server certificate verified against the root CA certificate installed on the ESP8266.
+The Watson IoT platform does allow you to replace the certificates used for MQTT traffic, so in this exercise you will generate your own self-signed certificates, add them to the Watson IoT platform and the ESP32S code, to enable a SSL/TLS connection with the server certificate verified against the root CA certificate installed on the ESP32S.
 
 The platform [documentation](https://console.bluemix.net/docs/services/IoT/reference/security/set_up_certificates.html#set_up_certificates) provides information about what information must be contained in certificates to work with the platform.
 
@@ -104,9 +104,9 @@ openssl s_client -CAfile <CA certificate pem file> -showcerts -state  -servernam
 
 replace <CA certificate pem file> with the name of the CA root certificate and <org ID> with the 6 character org ID for your instance of the IOT Platform.
 
-### Step 5 - Adding the root CA certificate to the ESP8266
+### Step 5 - Adding the root CA certificate to the ESP32S
 
-To allow the ESP8266 to validate the server certificate you need to add the root CA certificate to the ESP8266.  The TLS library we are using only supports the binary format, so the rootCA_certificate.der needs to be added to a directory called data in the sketch directory.  You can find out where the sketch directory is by using the *sketch* -> *Show sketch folder* in the Arduino menu.  Inside the sketch directory create a new directory called **data** then copy the rootCA_certificate.der file into the data directory.  You added the data upload tool to the Arduino IDE as part of the prerequisite setup instructions, so you can now run the tool.  Before running the data upload tool ensure the Serial Monitor window is closed, as it will block communication between the device and upload tool.  From the top menu select *Tools* -> *ESP8266 Sketch Data Upload*
+To allow the ESP32S to validate the server certificate you need to add the root CA certificate to the ESP32S.  The TLS library we are using only supports the binary format, so the rootCA_certificate.der needs to be added to a directory called data in the sketch directory.  You can find out where the sketch directory is by using the *sketch* -> *Show sketch folder* in the Arduino menu.  Inside the sketch directory create a new directory called **data** then copy the rootCA_certificate.der file into the data directory.  You added the data upload tool to the Arduino IDE as part of the prerequisite setup instructions, so you can now run the tool.  Before running the data upload tool ensure the Serial Monitor window is closed, as it will block communication between the device and upload tool.  From the top menu select *Tools* -> *ESP32S Sketch Data Upload*
 
 ### Step 6 - Adding the root CA certificate to your OS or browser
 
@@ -127,18 +127,18 @@ To add the root CA certificate to OS:
 
 **Note** : *If you are adding a certificate to a browser certificate manager, please ensure you are adding a Certificate Authority certificate.  This should allow you to import a .pem or .der file.  If it is asking for a .p12 file then you are trying to import a certificate and key, so are in the wrong section of the certificate manager.  You want to be adding a **Certificate Authority** certificate or certificate chain.*
 
-### Step 7 - Updating the ESP8266 code to use the certificate to establish a secure connection
+### Step 7 - Updating the ESP32S code to use the certificate to establish a secure connection
 
 When a server connects using SSL/TLS it presents its own certificate for verification.  The client uses its local CA certificate store to validate the certificate presented by the server is authentic, by validating that a known CA signed the certificate.
 
-Part of the certificate verification process checks that the certificate is in data (not before the start time of the certificate and not after certificate expiry time), so the ESP8266 needs to know the correct date/time.  The Network Time Protocol can be used to get the correct time from Internet servers.
+Part of the certificate verification process checks that the certificate is in data (not before the start time of the certificate and not after certificate expiry time), so the ESP32S needs to know the correct date/time.  The Network Time Protocol can be used to get the correct time from Internet servers.
 
-You have already uploaded the CA certificate to the ESP8266, so now the code needs to be updated to load the certificate from the flash file system and switch to using a SSL/TLS connection.
+You have already uploaded the CA certificate to the ESP32S, so now the code needs to be updated to load the certificate from the flash file system and switch to using a SSL/TLS connection.
 
 Make the following code changes:
 
 - Add an include at the top of the file to access the file system : `#include <FS.h>`
-- Add an include after the **ESP8266WiFi.h** include to add time : `#include <time.h>`
+- Add an include after the **WiFi.h** include to add time : `#include <time.h>`
 - Change the MQTT_PORT to use the secure port 8883 : `#define MQTT_PORT 8883`
 - Add a new #define to name the CA certificate : `#define CA_CERT_FILE "/rootCA_certificate.der"`
 - Change the wifiClient to use the secure version : `WiFiClientSecure wifiClient;`
@@ -201,7 +201,7 @@ You should now go into the IoT Platform settings section and update the connecti
 
 ### Step 8 - How the SPIFFS file system works
 
-The ESP8266 allows some of the on board or connected flash memory to be used as a file system.  The Arduino IDE plugin allows you to customise the size of the filesystem (*Tools* -> *Flash Size* allows you to specify 1MB or 3MB for the file system when a NodeMCU board is the target device).  The SPIFFS filesystem is a very simple file system, which does not support directories.  It is a flat list of files, however, the filenames can include the '/' character to give a sense of directory structure.  Filenames should not be more than 31 characters.
+The ESP32S allows some of the on board or connected flash memory to be used as a file system.  The Arduino IDE plugin allows you to customise the size of the filesystem (*Tools* -> *Flash Size* allows you to specify 1MB or 3MB for the file system when a NodeMCU board is the target device).  The SPIFFS filesystem is a very simple file system, which does not support directories.  It is a flat list of files, however, the filenames can include the '/' character to give a sense of directory structure.  Filenames should not be more than 31 characters.
 
 The data upload tool allows the content data directory in the sketch folder to be converted to a SPIFFS filesystem and uploaded to the device, where the content can then be access from the application.
 
@@ -219,7 +219,7 @@ The finished application should look like this:
 
 ```C++
 #include <FS.h>
-#include <ESP8266WiFi.h>
+#include <WiFi.h>
 #include <time.h>
 #include <Adafruit_NeoPixel.h>
 #include <DHT.h>
@@ -233,7 +233,7 @@ The finished application should look like this:
 // Watson IoT connection details
 #define MQTT_HOST "z53u40.messaging.internetofthings.ibmcloud.com"
 #define MQTT_PORT 8883
-#define MQTT_DEVICEID "d:z53u40:ESP8266:dev01"
+#define MQTT_DEVICEID "d:z53u40:ESP32S:dev01"
 #define MQTT_USER "use-token-auth"
 #define MQTT_TOKEN "password"
 #define MQTT_TOPIC "iot-2/evt/status/fmt/json"
@@ -305,7 +305,7 @@ void setup() {
   Serial.setTimeout(2000);
   while (!Serial) { }
   Serial.println();
-  Serial.println("ESP8266 Sensor Application");
+  Serial.println("ESP32S Sensor Application");
 
   // Start WiFi connection
   WiFi.mode(WIFI_STA);
