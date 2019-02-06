@@ -46,7 +46,7 @@ If you have a DHT mounted on a module then you need to check the pinout, usually
 
 To see how to use the DHT sensor there is an example sketch.  *File* -> *Examples* -> *DHT Sensor Library* -> *DHTtester*.  You need to make a couple of changes before you can run the sketch:
 
-1. Update the pin to the correct GPIO pin on the ESP32S corresponding to D2 on the NodeMCU board.  The [pinout](https://circuits4you.com/2017/12/31/nodemcu-pinout/) diagram will tell you that you need GPIO 4.
+1. Update the pin to the correct GPIO pin on the ESP32S corresponding to D2 on the NodeMCU board.  The ![pinout](../images/esp32layout.png) diagram will tell you that you need GPIO 4.
 2. Set the DHT type.  You are using DHT11 sensors, so uncomment the DHT11 line and comment out the DHT22 line.
 
 When you save the sketch you will need to save it to your Arduino directory as you can't modify the example source.  Once saved you can now compile and upload the sketch.  This sketch uses Serial output to print out the values read, so you will need to open the Serial monitor and set the baud rate to match the Serial.begin() line in the sketch = 9600.

@@ -4,7 +4,7 @@
 **Part 2** - [Device Registration](DEVICE.md) - [**Application**](APP.md) - [MQTT](MQTT.md) - [Server Certificate](CERT1.md) - [Client Certificate](CERT2.md)
 ***
 
-# Creating the sensing application for the ESP8266
+# Creating the sensing application for the ESP32S
 
 ## Lab Objectives
 
@@ -12,7 +12,7 @@ In this lab you will pull together all the information from part 1 into a single
 
 - How to create a new sketch and some recommendations for app structure
 - How to combine the WiFi, neopixel and DHT libraries into a single application
-- How to work with JSON data on the ESP8266
+- How to work with JSON data on the ESP32S
 
 ## Introduction
 
@@ -20,7 +20,7 @@ In part 1 you looked at a number of example sketches to see how the WiFi, NeoPix
 
 ### Step 1 - Create a new sketch
 
-Create a new sketch in the Arduino IDE using *File* -> *New* or the icon in the tool bar.  The save the sketch *File* -> *Save* and name the sketch, suggested name **esp8266Workshop**.
+Create a new sketch in the Arduino IDE using *File* -> *New* or the icon in the tool bar.  The save the sketch *File* -> *Save* and name the sketch, suggested name **ESP32SWorkshop**.
 
 You need to add 1 more library to the Arduino IDE to provide functions to handle the JSON data format.  When we start sending and receiving data from the IoT Platform the JSON data format will be used, so we can start using JSON now.  In the Library Manager (*Sketch* -> *Include Library* -> *Manage Libraries...*) search for **ArduinoJson** and install the latest v5.x version of the library.
 
@@ -33,7 +33,7 @@ I've provided the code for the application below.  As you enter it (or cut and p
 Add the code below to the sketch above the **setup()** function:
 
 ```C++
-#include <ESP8266WiFi.h>
+#include <WiFi.h>
 #include <Adafruit_NeoPixel.h>
 #include <DHT.h>
 #include <ArduinoJson.h>
@@ -93,7 +93,7 @@ void setup()
   Serial.setTimeout(2000);
   while (!Serial) { }
   Serial.println();
-  Serial.println("ESP8266 Sensor Application");
+  Serial.println("ESP32S Sensor Application");
 
   // Start WiFi connection
   WiFi.mode(WIFI_STA);

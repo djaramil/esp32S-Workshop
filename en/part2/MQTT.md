@@ -23,7 +23,7 @@ We will start by using an unsecured MQTT connection, then in the next section we
 
 Open up the IoT platform console for the instance connected to your Starter Kit application.  From the dashboard (*≡* -> *Dashboard*) select the application then in the overview section select the IoT platform in the connections panel).
 
-Launch the IoT platform console, then switch to the Settings section.  Under Security select Connection Security then press the button **Open Connection Security Policy**.  Change the Default Security Level to **TLS Optional**, accept the Warning message by pressing the Ok button, then **Save** the change.  Your IoT platform instance will now accept unsecured MQTT connections.  Leave the browser window showing the IoT Platform console open, as you'll need to get some information when adding the MQTT code to the ESP8266 application.
+Launch the IoT platform console, then switch to the Settings section.  Under Security select Connection Security then press the button **Open Connection Security Policy**.  Change the Default Security Level to **TLS Optional**, accept the Warning message by pressing the Ok button, then **Save** the change.  Your IoT platform instance will now accept unsecured MQTT connections.  Leave the browser window showing the IoT Platform console open, as you'll need to get some information when adding the MQTT code to the ESP32S application.
 
 ### Step 2 - Enhancing the application to send data to the IoT platform
 
@@ -51,8 +51,8 @@ Now add some #define statements to contain that the MQTT code will use.  Add the
 You need to change the values to match your configuration:
 
 - XXXXXX should be the 6 character Organisation ID for your platform.  If you look in the settings section of the IoT Platform console, under identity you will see the value you need to use.
-- YYYY is the device type you used to for the ESP8266 device.  This should be ESP8266, but you can verify by looking in the devices section.  All registered devices are listed here, and you can see the Device Type and Device ID.
-- ZZZZ is the device ID for your ESP8266, in the lab it was suggested to use dev01
+- YYYY is the device type you used to for the ESP32S device.  This should be ESP32S, but you can verify by looking in the devices section.  All registered devices are listed here, and you can see the Device Type and Device ID.
+- ZZZZ is the device ID for your ESP32S, in the lab it was suggested to use dev01
 - PPPPP is the token you used when registering the device (hopefully you haven't forgot what you used, if so you need to delete the device and reregister it)
 
 After the configuration block and under the pixel and dht variable declarations you need to add the the following:
@@ -131,7 +131,7 @@ Finally, replace the 10 second ```delay(10000)``` to call the mqtt **loop()** fu
 
 ### Step 3 - Run the application
 
-Compile and upload the code to your ESP8266 and you should see the ```WiFi Connected```, followed by ```Attempting MQTT connection...MQTT Connected```. Every 10 second interval you see the DHT sensor data printed on the console.  The ESP8266 should also be publishing MQTT messages to the Watson IoT Platform.  To verify this, switch to your browser window showing the IoT Platform console, switch to the Devices section.  Click on the esp8266 device to expand it then click **Recent Events**.  You should see the status event messages with the live data appearing every 10 seconds.
+Compile and upload the code to your ESP32S and you should see the ```WiFi Connected```, followed by ```Attempting MQTT connection...MQTT Connected```. Every 10 second interval you see the DHT sensor data printed on the console.  The ESP32S should also be publishing MQTT messages to the Watson IoT Platform.  To verify this, switch to your browser window showing the IoT Platform console, switch to the Devices section.  Click on the ESP32S device to expand it then click **Recent Events**.  You should see the status event messages with the live data appearing every 10 seconds.
 
 ### Step 4 - How it works
 
@@ -151,10 +151,10 @@ When connecting to the Watson IoT platform there are some requirements on some p
 
 ### Solution code
 
-The complete ESP8266 application is shown below (you will need to change the configuration section to match your environment):
+The complete ESP32S application is shown below (you will need to change the configuration section to match your environment):
 
 ```C++
-#include <ESP8266WiFi.h>
+#include <WiFi.h>
 #include <Adafruit_NeoPixel.h>
 #include <DHT.h>
 #include <ArduinoJson.h>
@@ -167,7 +167,7 @@ The complete ESP8266 application is shown below (you will need to change the con
 // Watson IoT connection details
 #define MQTT_HOST "z53u40.messaging.internetofthings.ibmcloud.com"
 #define MQTT_PORT 1883
-#define MQTT_DEVICEID "d:z53u40:ESP8266:dev01"
+#define MQTT_DEVICEID "d:z53u40:ESP32S:dev01"
 #define MQTT_USER "use-token-auth"
 #define MQTT_TOKEN "password"
 #define MQTT_TOPIC "iot-2/evt/status/fmt/json"
@@ -234,7 +234,7 @@ void setup() {
   Serial.setTimeout(2000);
   while (!Serial) { }
   Serial.println();
-  Serial.println("ESP8266 Sensor Application");
+  Serial.println("ESP32S Sensor Application");
 
   // Start WiFi connection
   WiFi.mode(WIFI_STA);
