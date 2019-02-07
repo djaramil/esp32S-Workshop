@@ -257,7 +257,7 @@ void setup() {
 
   } else {
     Serial.println("MQTT Failed to connect!");
-    ESP.reset();
+    ESP.restart();
   }
 }
 
