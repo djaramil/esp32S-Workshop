@@ -26,7 +26,13 @@ You need to add 1 more library to the Arduino IDE to provide functions to handle
 
 **Note, do not use beta versions of the ArduinoJson library, stick to the latest released v5.x versions.  You can use the drop down in the library manager to select which version of the library to install.  If you have installed v6 beta, then use the library manager to replace the version with the latest 5.x.x release of the library.  You will get a compile error if you use v6 with the bootcamp code.**
 
-### Step 2 - Input the application code
+### Step 2 - Wire the Breadboard
+
+Wire the parts as showned in the Breadboard diagram below:
+
+![Parts wiring](../images/part2-1-dht11-neopixel.png)
+
+### Step 3 - Input the application code
 
 I've provided the code for the application below.  As you enter it (or cut and paste it) please take time to ensure you understand the application and what each of the library function calls do.
 
@@ -145,7 +151,7 @@ void loop()
 
 This code is called repeatedly after the **setup()** function returns.  It reads the humidity and temperature for the DHT sensor, validates it received the readings then sets the LED colour to the correct colour based on the temperature and the alert and warning temperatures defined in the constants at the top of the application.  Finally the temperature and humidity values are added to the JSON object, which is then converted to a string buffer and printed to the console.
 
-### Step 3 - Run the code and view output using the Serial Monitor
+### Step 4 - Run the code and view output using the Serial Monitor
 
 Save, compile and upload the sketch.  Once uploaded open up the Serial Monitor and set the baud rate to 115200, to match the rate set in the Serial.begin(115200) message.  You should see the confirmation that the WiFi connection has been made and then you should see the sensor data formatted as a JSON string, repeating every 10 seconds (10000 milliseconds).
 
@@ -157,7 +163,7 @@ The LED should also be set to a colour based on the temperature and the WARN and
 - YELLOW (between WARN_HOT and ALARM_HOT)
 - RED (above ALARM_HOT)
 
-### Step 4 - Understanding how to work with JSON data
+### Step 5 - Understanding how to work with JSON data
 
 JSON format is widely used for APIs and data exchange between systems.  The above sketch uses one of the optimised JSON libraries for small memory devices.  To use the library you need to:
 
