@@ -20,20 +20,16 @@ This Lab will show you how to use the Arduino IDE with the ESP32S plugin to crea
 Let's start with a simple application to display information about the flash memory.  Start by setting up your Arduino IDE to the correct settings for the board.  Using the *Tools* menu, ensure the following settings are set:
 
 - Board : **NodeMCU-32S**
-- Flash Size : **4M (1M SPIFFS)**
-- Debug Port : **Disabled**
-- Debug Level : **None**
-- IwIP Variant : **v2 Lower Memory**
-- CPU Frequency : **160 MHz**
 - Upload Speed : **115200**
-- Erase Flash : **Only Sketch**
+- Flash Frequency: **80MHz**
 - Port : *Connect the ESP32S to your laptop using a MicroUSB cable and then select your port, depending on OS*
 
 ### Step 2 - Loading an example sketch
 
 Then choose *File* -> *Examples* -> *ESP32* -> *ChipID* -> *GetChipID* from the menu to open a new window with the sample sketch preloaded (you can close the previous window as it is not needed).  This sketch will print out the ChipID which is the MAC address in reverse byte order.  
 
-Example: 
+Example:
+
 - ESP32 Chip ID = A0CC4DBF713C
 - MAC Address = 3C:71:BF:4D:CC:A0
 

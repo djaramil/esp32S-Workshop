@@ -22,7 +22,7 @@ The ESP32S has a built in WiFi interface that supports 802.11 b/g/n 2.4 GHz netw
 
 ### Step 1 - Load an example sketch
 
-In the Arduino IDE, load the WiFiScan example sketch, using *File* -> *Examples* -> *ESP32SWiFi* -> *WiFiScan* then upload the sketch to your ESP32S.  This sketch will scan for local WiFi networks and display the results.
+In the Arduino IDE, load the WiFiScan example sketch, using *File* -> *Examples* -> *WiFi* -> *WiFiScan* then upload the sketch to your ESP32S.  This sketch will scan for local WiFi networks and display the results.
 
 ### Step 2 - Run the sketch and monitor output
 
@@ -38,7 +38,7 @@ You can get documentation about using ESP32S in Arduino and the libraries that a
 
 ### Step 4 - How to connect to a WiFi network
 
-The example sketch **WiFiClient** shows how to connect to a WiFi network, providing a SSID and password, which we will use in part 2 of the workshop.  Load the sketch (*File* -> *Examples* -> *ESP32SWiFi* -> *WiFiClient*) and examine the code, take note of how the WiFi network credentials are entered to join a network.
+The example sketch **WiFiClient** shows how to connect to a WiFi network, providing a SSID and password, which we will use in part 2 of the workshop.  Load the sketch (*File* -> *Examples* -> *WiFi* -> *WiFiClient*) and examine the code, take note of how the WiFi network credentials are entered to join a network.
 
 *Note: you don't need to run this example and apply for the sparkfun credentials, simply walk through the code and see how the connection to the WiFi is created.*
 
@@ -46,7 +46,7 @@ The example sketch **WiFiClient** shows how to connect to a WiFi network, provid
 
 Now you have seen 2 different example sketches using both Serial and WiFi connections.  You may begin to see a pattern on how to use the resources:
 
-- Optionally include the required header, such as `#include "ESP32SWiFi.h"`
+- Optionally include the required header, such as `#include "WiFi.h"`
 - In the **setup()** function initialise the library, usually with a begin() call and/or setting parameters
 - In the **loop()** function access features of the library
 
