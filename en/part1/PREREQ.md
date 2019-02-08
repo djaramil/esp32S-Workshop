@@ -32,7 +32,7 @@ There are no incoming ports needed for the workshop, but the ESP32S needs to be 
 
 You need to purchase the following hardware to work through the workshop.  The workshop instructions uses the DHT11 temperature and humidity sensor.  This can be replaced with the DHT22 sensor, which has the same pinout, but offers a more accurate sensor.  DHT11 is accurate within 2C, whilst the DHT22 is accurate to within 0.5C.
 
-- ESP32S, (search for **NodeMCU ESP32S v3** or **v2**)
+- ESP32S, (search for **NodeMCU ESP32S v1.1**)
 - NeoPixel RGB LED (or any other chainable RGB/RGBW LED based on ws2812b or sk6812 chips ), such as [this from Adafruit](https://www.adafruit.com/product/1734) (Search for **Neopixel 8mm or 5mm** - often sold in packs of 5)
 - DHT11 Temperature / Humidity Sensor (search for **DHT11 or DHT22**)
 - 6 x Female to Female jumper wires (search for **dupont cable f2f or f-f** - usually sold in packs of 40 cables)
@@ -105,15 +105,16 @@ Select *Tools* -> *Board:* -> *Board Manager...* from the menu, then enter ESP i
 
 ### Step 4 - Install the filesystem upload tool for ESP32S
 
-The ESP32S has flash memory that can hold a filesystem.  There is a plugin for Arduino that allows you to generate a populated filesystem and upload it to the ESP32S board.  The plugin can be downloaded from [**here**](https://github.com/ESP32S/arduino-ESP32Sfs-plugin/releases).  You need to create a tools directory within the sketch directory then extract the content there.
+The ESP32S has flash memory that can hold a filesystem.  There is a plugin for Arduino that allows you to generate a populated filesystem and upload it to the ESP32S board.  The plugin can be downloaded from [**here**](https://github.com/esp8266/arduino-esp8266fs-plugin).  You need to create a tools directory within the sketch directory then extract the content there.
+(*Note: Not sure if this part works with ESP32S*)
 
 ![tools directory](../images/toolsDirectory.png)
 
  (*Note: you can find the sketch directory location from the preferences panel of the Arduino IDE*).  The default location of the sketch directory is:
 
-- Linux - **/home/< user name >/Arduino/tools/ESP32SFS**
-- MacOS - **/Users/< user name >/Documents/Arduino/tools/ESP32SFS**
-- Windows - **C:\Users\< user name >\Documents\Arduino\tools\ESP32SFS**
+- Linux - **/home/< user name >/Arduino/tools/esp8266fs**
+- MacOS - **/Users/< user name >/Documents/Arduino/tools/esp8266fs**
+- Windows - **C:\Users\< user name >\Documents\Arduino\tools\esp8266fs**
 
 #### Step 5 - SSL utility to work with certificates
 

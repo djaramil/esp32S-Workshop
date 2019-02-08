@@ -31,7 +31,11 @@ Let's start with a simple application to display information about the flash mem
 
 ### Step 2 - Loading an example sketch
 
-Then choose *File* -> *Examples* -> *ESP32S* -> *CheckFlashConfig* from the menu to open a new window with the sample sketch preloaded (you can close the previous window as it is not needed).
+Then choose *File* -> *Examples* -> *ESP32* -> *ChipID* -> *GetChipID* from the menu to open a new window with the sample sketch preloaded (you can close the previous window as it is not needed).  This sketch will print out the ChipID which is the MAC address in reverse byte order.  
+
+Example: 
+- ESP32 Chip ID = A0CC4DBF713C
+- MAC Address = 3C:71:BF:4D:CC:A0
 
 ### Step 3 - Compiling the sketch
 
