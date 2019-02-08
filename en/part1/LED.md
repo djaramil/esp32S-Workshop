@@ -46,13 +46,14 @@ You need to connect the Data In, +5/3.3 voltage and ground to the ESP32S board a
 
 ![ModeMCU LED Wiring](../images/ESP32S+Neopixel-LED.png)
 
-Click [**here**] (../images/ESP32S-Pins.png) to view **ESP32S** pinout . More info here:  (http://forum.fritzing.org/t/esp32s-hiletgo-dev-boad-with-pinout-template/5357)
+Click [**here**](../images/ESP32S-Pins.png) to view **ESP32S** pinout. 
+For more details go [here](http://forum.fritzing.org/t/esp32s-hiletgo-dev-boad-with-pinout-template/5357)
 
 ### Step 3 - Load an example sketch
 
 Once you have the connections made you can connect the board to your laptop.  Load the example sketch **strandtest** *File* -> *Examples* -> *AdaFruit Neopixel* -> *strandtest*.  You need to make a couple of changes to the example sketch:
 
-1. Change the PIN number to 5.  D1 on the NodeMCU board maps to GPIO5 on the ESP32S processor - see the [pinout](https://circuits4you.com/2017/12/31/nodemcu-pinout/)
+1. Change the PIN number to 5.  GPIOP5 maps to pin 29 on the ESP32S processor - see the [pinout](../images/ESP32S-Pins.png))
 2. Set the number of pixels to 1 in the strip definition line
 3. In the loop function comment out the 4 lines starting with **theatreChase** as these cause rapid flashing when only a single LED is connected, which is not pleasant to look at.
 
@@ -60,57 +61,54 @@ When you save the file you should be prompted to save it as a new file (you cann
 
 Compile and upload the sketch to see the LED change colours.
 
-The to of your code should look like this:
+Here is a more simplified version of the sample code you can use:
 
 ```cpp
+
 #include <Adafruit_NeoPixel.h>
-#ifdef __AVR__
-  #include <avr/power.h>
-#endif
 
-#define PIN 5
+// --------------------------------------------------------------------------------------------
+//        UPDATE CONFIGURATION TO MATCH YOUR ENVIRONMENT
+// --------------------------------------------------------------------------------------------
 
-// Parameter 1 = number of pixels in strip
-// Parameter 2 = Arduino pin number (most are valid)
-// Parameter 3 = pixel type flags, add together as needed:
-//   NEO_KHZ800  800 KHz bitstream (most NeoPixel products w/WS2812 LEDs)
-//   NEO_KHZ400  400 KHz (classic 'v1' (not v2) FLORA pixels, WS2811 drivers)
-//   NEO_GRB     Pixels are wired for GRB bitstream (most NeoPixel products)
-//   NEO_RGB     Pixels are wired for RGB bitstream (v1 FLORA pixels, not v2)
-//   NEO_RGBW    Pixels are wired for RGBW bitstream (NeoPixel RGBW products)
-Adafruit_NeoPixel strip = Adafruit_NeoPixel(1, PIN, NEO_GRB + NEO_KHZ800);
+// Add GPIO pins used to connect devices
+#define RGB_PIN 5 // GPIO pin the data line of RGB LED is connected to
 
-// IMPORTANT: To reduce NeoPixel burnout risk, add 1000 uF capacitor across
-// pixel power leads, add 300 - 500 Ohm resistor on first pixel's data input
-// and minimize distance between Arduino and first pixel.  Avoid connecting
-// on a live circuit...if you must, connect GND first.
+#define NEOPIXEL_TYPE NEO_RGB + NEO_KHZ800
 
-void setup() {
-  // This is for Trinket 5V 16MHz, you can remove these three lines if you are not using a Trinket
-  #if defined (__AVR_ATtiny85__)
-    if (F_CPU == 16000000) clock_prescale_set(clock_div_1);
-  #endif
-  // End of trinket special code
+Adafruit_NeoPixel pixel = Adafruit_NeoPixel(1, RGB_PIN, NEOPIXEL_TYPE);
 
+uint16_t r = 0; // LED RED value
+uint16_t g = 0; // LED Green value
+uint16_t b = 0; // LED Blue value
 
-  strip.begin();
-  strip.show(); // Initialize all pixels to 'off'
+void setup()
+{
+  // Start serial console
+  Serial.begin(115200);
+  Serial.setTimeout(2000);
+  while (!Serial) { }
+  Serial.println();
+  Serial.println("ESP32S Sensor Application");
+
+  pixel.begin();
 }
 
-void loop() {
-  // Some example procedures showing how to display to the pixels:
-  colorWipe(strip.Color(255, 0, 0), 50); // Red
-  colorWipe(strip.Color(0, 255, 0), 50); // Green
-  colorWipe(strip.Color(0, 0, 255), 50); // Blue
-//colorWipe(strip.Color(0, 0, 0, 255), 50); // White RGBW
-  // Send a theater pixel chase in...
-  //theaterChase(strip.Color(127, 127, 127), 50); // White
-  //theaterChase(strip.Color(127, 0, 0), 50); // Red
-  //theaterChase(strip.Color(0, 0, 127), 50); // Blue
+void randRGB()
+{
+  r=random(0,255);
+  g=random(0,255);
+  b=random(0,255);
+  Serial.printf("rgb=%d,%d,%d\n",r,g,b);
+}
 
-  rainbow(20);
-  rainbowCycle(20);
-  //theaterChaseRainbow(50);
+void loop()
+{
+    // Set RGB LED Colour
+    pixel.setPixelColor(0, r, g, b);
+    pixel.show();
+    randRGB();
+    delay(100);
 }
 ```
 
