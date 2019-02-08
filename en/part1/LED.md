@@ -46,7 +46,7 @@ You need to connect the Data In, +5/3.3 voltage and ground to the ESP32S board a
 
 ![ModeMCU LED Wiring](../images/ESP32S+Neopixel-LED.png)
 
-Click [**here**](../images/ESP32S-Pins.png){:target="_blank"} to view **ESP32S** pinout
+Click [**here**](../images/ESP32S-Pins.png target="_blank") to view **ESP32S** pinout
 
 ### Step 3 - Load an example sketch
 
