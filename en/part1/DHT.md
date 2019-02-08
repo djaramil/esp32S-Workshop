@@ -27,16 +27,15 @@ When both of the libraries have been installed you can close the library manager
 
 ### Step 2 - Connect the DHT sensor to your ESP32S board
 
-Disconnect the ESP*266 board from your laptop/workstation before connecting the DHT sensor.
+Disconnect the ESP32S board from your laptop/workstation before connecting the DHT sensor.
 
-The DHT sensors have 4 connecting pins.  When looking at the front of the sensor (mesh case) with the pins at the bottom, the connections are (left to right):
+The DHT sensors have 3 or 4 connecting pins.  There is a DHT11 that is mounted on a mini-board and extends out 3 pins.  When looking at the front of the sensor (mesh case) with the pins at the bottom, the connections are (left to right):
 
-- +'ve voltage
+- +3.3/5 voltage
 - Data
-- Not used
 - Ground
 
-![ModeMCU DHT Wiring](../images/NodeMCU_DHT.jpg)
+![ModeMCU DHT Wiring](../images/ESP32S+DHT11.png)
 
 If you have a DHT mounted on a module then you need to check the pinout, usually indicated on the board, with **+** (to 3V pin), **-** (to G pin) and **out** or **data** (to D2 pin):
 
