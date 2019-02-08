@@ -38,13 +38,15 @@ The remaining pin is **+'ve voltage**, which should be 5v, but it works with 3.3
 So, with the shortest pin on the left and the flat side on the right the pinout is (left to right):
 
 - Data In (shortest pin)
-- +'ve Voltage
+- +5/3.3 Voltage
 - Gnd (longest pin)
 - Data Out (no connection)
 
-You need to connect the Data In, +'ve voltage and ground to the ESP32S board as shown in the diagram.  Take care to ensure that the connections are as shown, as connecting the wrong pins can damage the ESP32S board and/or the LED:
+You need to connect the Data In, +5/3.3 voltage and ground to the ESP32S board as shown in the diagram.  Take care to ensure that the connections are as shown, as connecting the wrong pins can damage the ESP32S board and/or the LED:
 
 ![ModeMCU LED Wiring](../images/ESP32S+Neopixel-LED.png)
+
+Click [**here**](../images/ESP32S-Pins.png) to view **ESP32S** pinout
 
 ### Step 3 - Load an example sketch
 
