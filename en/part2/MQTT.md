@@ -88,7 +88,7 @@ at the end of the setup() function add the following code to connect the MQTT cl
 
   } else {
     Serial.println("MQTT Failed to connect!");
-    ESP.reset();
+    ESP.restart();
   }
 ```
 
