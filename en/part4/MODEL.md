@@ -4,7 +4,7 @@
 **Part 4** - [Watson Studio](STUDIO.md) - [Training Data](TRAINING.md) - [Notebooks](JUPYTER.md) - [**ESP32S model**](MODEL.md) - [Summary](SUMMARY.md)
 ***
 
-# Run the model on the ESP8266 device
+# Run the model on the ESP32S device
 
 ## Learning Objectives
 
