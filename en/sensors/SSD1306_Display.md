@@ -119,5 +119,5 @@ You can see the temperature and humidity displayed on the Display Module
 To see how to use the Display Module in more advanced ways, there are some useful sketch examples that you can load into your IDE. You can load an example from *File* -> *Examples* -> *ESP8266_and_ESP32_Oled_Driver_for_SSD1306_display* and select from the list.
 
 ***
-**Sensor labs: ** [Sensor](../README.md) - [Ultrasonic Sensor](../sensor/ESP32S+Neopixel-LED+HC-SR04.md) - [Pyroelectric Infrared PIR Sensor](../sensor/ESP32S+Neopixel-LED+PIR.md) - [Heart sensor](../sensor/PULSE+RGB.md)  - [OLED LCD Display Module](../sensor/SSD1306_Display.md)
+**Sensor labs: ** [Sensor](../README.md) - [Ultrasonic Sensor](ESP32S+Neopixel-LED+HC-SR04.md) - [Pyroelectric Infrared PIR Sensor](ESP32S+Neopixel-LED+PIR.md) - [Heart sensor](PULSE+RGB.md) - [OLED LCD Display Module](SSD1306_Display.md)
 ***

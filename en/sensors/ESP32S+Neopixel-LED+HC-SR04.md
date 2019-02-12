@@ -119,5 +119,5 @@ You can see the graphical view of the pulse output by opening the Serial Plottte
 ![Serial Plotter](../images/ESP32S+Neopixel-LED+HC-SR04-output.png)
 
 ***
-**Sensor labs: ** [Sensor](../README.md) - [Ultrasonic Sensor](../sensor/ESP32S+Neopixel-LED+HC-SR04.md) - [Pyroelectric Infrared PIR Sensor](../sensor/ESP32S+Neopixel-LED+PIR.md) - [Heart sensor](../sensor/PULSE+RGB.md)  - [OLED LCD Display Module](../sensor/SSD1306_Display.md)
+**Sensor labs: ** [Sensor](../README.md) - [Ultrasonic Sensor](ESP32S+Neopixel-LED+HC-SR04.md) - [Pyroelectric Infrared PIR Sensor](ESP32S+Neopixel-LED+PIR.md) - [Heart sensor](PULSE+RGB.md) - [OLED LCD Display Module](SSD1306_Display.md)
 ***
