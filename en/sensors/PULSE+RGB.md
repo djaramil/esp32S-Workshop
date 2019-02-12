@@ -3,7 +3,7 @@
 [Home](/README.md) - [**Part 1**](../part1/README.md) - [Part 2](../part2/README.md) - [Part 3](../part3/README.md) - [Part 4](../part4/README.md)
 
 ***
-**Sensor Labs: ** [Sensor](../sensor/README.md) - [Heart sensor](../sensors/PULSE+RGB.md) - [Sensor 1](../sensors/SENSOR1.md) - [Sensor 2](../sensors/SENSOR2.md) - [Sensor 3](../sensors/SENSOR3.md)
+**Sensor Labs: ** [Sensor](./README.md) - [Heart sensor](./PULSE+RGB.md) - [Sensor 1](./SENSOR1.md) - [Sensor 2](./SENSOR2.md) - [Sensor 3](./SENSOR3.md)
 ***
 
 This part contains instruction to get started with Human Heart Rate/Pulse sensor on ESP32S
@@ -123,5 +123,5 @@ To see how the LED changes colors based on the pulse value, tighten the `touch` 
 To see how to use the Pulse sensor in more advanced ways, there are some useful sketch examples that you can load into your IDE.  *Tools* -> *Manage Libraries* -> *Search for Pulse Sensor Playground* -> *Install*. After that, you can load an example from *File* -> *Examples* -> *PulseSensor Playgound* and select from the list.
 
 ***
-**Sensor labs: ** [Sensor](../README.md) - [Heart sensor](../sensors/PULSE+RGB.md) - [Sensor 1](../sensors/SENSOR1.md) - [Sensor 2](../sensors/SENSOR2.md) - [Sensor 3](../sensors/SENSOR3.md)
+**Sensor labs: ** [Sensor](./README.md) - [Heart sensor](./PULSE+RGB.md) - [Sensor 1](./SENSOR1.md) - [Sensor 2](./SENSOR2.md) - [Sensor 3](./SENSOR3.md)
 ***
