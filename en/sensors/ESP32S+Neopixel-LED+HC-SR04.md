@@ -14,14 +14,14 @@ In this lab you will learn how to connect the Pulse sensor to the ESP32S board a
 
 You will learn:
 
-- The electrical connections needed to connect the Pulse sensor (pulsensor.com) to the ESP32S
+- The electrical connections needed to connect the ultrasonic sensor to the ESP32S
 - Run a simple application to read data from the sensor and change color of a Neo Pixel RGB
 - The useful library used to build more advanced application using the sensor
 
 Parts in this lab:
 
 - ESP32S (36 pins)
-- Human Heart Rate / Pulse sensor (pulsesensor.com)
+- HC-SR04 Ultrasonic Sensor
 - Neo Pixel 8mm 
 - male-male Jumpers
 
@@ -56,17 +56,6 @@ Adafruit_NeoPixel pixel = Adafruit_NeoPixel(1, RGB_PIN, NEOPIXEL_TYPE);
 uint16_t r = 0; // LED RED value
 uint16_t g = 0; // LED Green value
 uint16_t b = 0; // LED Blue value
-
-void randRGB()
-{
-  r=random(0,255);
-  g=random(0,255);
-  b=random(0,255);
-  Serial.printf("rgb=%d,%d,%d\n",r,g,b);
-  // Set RGB LED Colour
-  pixel.setPixelColor(0, r, g, b);
-  pixel.show();
-}
 
 // defines pins numbers for HC SR04 Sensor
 const int trigPin = 23; // TRIGGER PIN
