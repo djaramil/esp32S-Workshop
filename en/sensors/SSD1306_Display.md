@@ -3,7 +3,7 @@
 [Home](/README.md) - [**Part 1**](../part1/README.md) - [Part 2](../part2/README.md) - [Part 3](../part3/README.md) - [Part 4](../part4/README.md)
 
 ***
-**Sensor Labs: ** [Sensor](../sensor/README.md) - [Heart sensor](../sensor/PULSE+RGB.md) - [OLED LCD LED Display Module](../sensor/SSD1306_Display.md) - [Sensor 2](../sensor/SENSOR2.md) - [Sensor 3](../sensor/SENSOR3.md)
+**Sensor labs: ** [Sensor](README.md) - [Ultrasonic Sensor](ESP32S+Neopixel-LED+HC-SR04.md) - [Pyroelectric Infrared PIR Sensor](ESP32S+Neopixel-LED+PIR.md) - [Heart sensor](PULSE+RGB.md) - [OLED LCD Display Module](SSD1306_Display.md)
 ***
 
 This part contains instruction to get started with 0.96 i2C OLED LCD LED Display Module for Arduino
@@ -119,5 +119,5 @@ You can see the temperature and humidity displayed on the Display Module
 To see how to use the Display Module in more advanced ways, there are some useful sketch examples that you can load into your IDE. You can load an example from *File* -> *Examples* -> *ESP8266_and_ESP32_Oled_Driver_for_SSD1306_display* and select from the list.
 
 ***
-**Sensor labs: ** [Sensor](../README.md) - [Heart sensor](../sensor/PULSE+RGB.md) - [Sensor 1](../sensor/SENSOR1.md) - [Sensor 2](../sensor/SENSOR2.md) - [Sensor 3](../sensor/SENSOR3.md)
+**Sensor labs: ** [Sensor](README.md) - [Ultrasonic Sensor](ESP32S+Neopixel-LED+HC-SR04.md) - [Pyroelectric Infrared PIR Sensor](ESP32S+Neopixel-LED+PIR.md) - [Heart sensor](PULSE+RGB.md) - [OLED LCD Display Module](SSD1306_Display.md)
 ***

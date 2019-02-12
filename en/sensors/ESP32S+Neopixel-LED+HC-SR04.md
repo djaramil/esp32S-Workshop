@@ -3,7 +3,7 @@
 [Home](/README.md) - [**Part 1**](../part1/README.md) - [Part 2](../part2/README.md) - [Part 3](../part3/README.md) - [Part 4](../part4/README.md)
 
 ***
-**Sensor Labs: ** [Sensor](../sensor/README.md) - [Heart sensor](../sensor/PULSE+RGB.md) - [Sensor 1](../sensor/SENSOR1.md) - [Sensor 2](../sensor/SENSOR2.md) - [Sensor 3](../sensor/SENSOR3.md)
+**Sensor labs: ** [Sensor](README.md) - [Ultrasonic Sensor](ESP32S+Neopixel-LED+HC-SR04.md) - [Pyroelectric Infrared PIR Sensor](ESP32S+Neopixel-LED+PIR.md) - [Heart sensor](PULSE+RGB.md) - [OLED LCD Display Module](SSD1306_Display.md)
 ***
 
 This part contains instruction to get started with Human Heart Rate/Pulse sensor on ESP32S
@@ -119,5 +119,5 @@ You can see the graphical view of the pulse output by opening the Serial Plottte
 ![Serial Plotter](../images/ESP32S+Neopixel-LED+HC-SR04-output.png)
 
 ***
-**Sensor labs: ** [Sensor](../README.md) - [Heart sensor](../sensor/PULSE+RGB.md) - [Sensor 1](../sensor/SENSOR1.md) - [Sensor 2](../sensor/SENSOR2.md) - [Sensor 3](../sensor/SENSOR3.md)
+**Sensor labs: ** [Sensor](README.md) - [Ultrasonic Sensor](ESP32S+Neopixel-LED+HC-SR04.md) - [Pyroelectric Infrared PIR Sensor](ESP32S+Neopixel-LED+PIR.md) - [Heart sensor](PULSE+RGB.md) - [OLED LCD Display Module](SSD1306_Display.md)
 ***
