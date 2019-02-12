@@ -1,5 +1,5 @@
 *Quick links :*
-[Home](/README.md) - [Part 1](../part1/README.md) - [Part 2](../part2/README.md) - [Part 3](../part3/README.md) - [Part 4](../part4/README.md)
+[Home](/README.md) - [Part 1](../part1/README.md) - [Part 2](../part2/README.md) - [**Part 3**](../part3/README.md) - [Part 4](../part4/README.md)
 ***
 
 # Part 4
@@ -22,13 +22,13 @@ This section shows you how to create the training data needed to create a model 
 
 This section shows you how to use the training data to create a model that can then be used to classify actions.
 
-- practical [**Jupyter Notebook - ESP8266**](JUPYTER.md)
+- practical [**Jupyter Notebook - ESP32S**](JUPYTER.md)
 
-## Run the model on the ESP8266 device
+## Run the model on the ESP32S device
 
 This section takes the output from the Jupyter Notebook and implements the trained model on the ESP8266 device.
 
-- practical [**Implement model on ESP8266**](MODEL.md)
+- practical [**Implement model on ESP32S**](MODEL.md)
 
 ## Workshop summary
 
@@ -38,4 +38,4 @@ This section summarises what the workshop covered and also provides some useful 
 
 ***
 *Quick links :*
-[Home](/README.md) - [Part 1](../part1/README.md) - [Part 2](../part2/README.md) - [Part 3](../part3/README.md) - [Part 4](../part4/README.md)
+[Home](/README.md) - [Part 1](../part1/README.md) - [Part 2](../part2/README.md) - [**Part 3**](../part3/README.md) - [Part 4](../part4/README.md) - [Sensors](/en/sensors/README.md)
