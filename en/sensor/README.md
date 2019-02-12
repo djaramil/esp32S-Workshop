@@ -8,9 +8,10 @@
 
 - Lab: [**Example application to use pulse sensor**](PULSE+RGB.md)
 
-## Sensor 1
+## OLED LCD LED Display Module for Arduino
 
-- Lab: [**Sensor 1**](SENSOR1.md)
+- Lab: [**Example application to use Display**](SSD1306_Display.md)
+
 
 ## Add more stuffs here
 
