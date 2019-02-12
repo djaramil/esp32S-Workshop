@@ -1,7 +1,7 @@
 *Quick links :*
-[Home](/README.md) - [Part 1](../part1/README.md) - [Part 2](../part2/README.md) - [Part 3](../part3/README.md) - [**Part 4**](../part4/README.md)
+[Home](/README.md) - [Part 1](../part1/README.md) - [Part 2](../part2/README.md) - [Part 3](../part3/README.md) - [**Part 4**](../part4/README.md) - [Sensors](/en/sensors/README.md)
 ***
-**Part 4** - [Watson Studio](STUDIO.md) - [Training Data](TRAINING.md) - [Notebooks](JUPYTER.md) - [ESP8266 model](MODEL.md) - [**Summary**](SUMMARY.md)
+**Part 4** - [Watson Studio](STUDIO.md) - [Training Data](TRAINING.md) - [Notebooks](JUPYTER.md) - [ESP32S model](MODEL.md) - [**Summary**](SUMMARY.md)
 ***
 
 # Workshop Summary
@@ -46,7 +46,7 @@ There is also a Data Science specialisation, which comprises of 3 courses and a 
   - [Applied AI with DeepLearning](https://www.coursera.org/learn/ai)
 
 ***
-**Part 4** - [Watson Studio](STUDIO.md) - [Training Data](TRAINING.md) - [Notebooks](JUPYTER.md) - [ESP8266 model](MODEL.md) - [**Summary**](SUMMARY.md)
+**Part 4** - [Watson Studio](STUDIO.md) - [Training Data](TRAINING.md) - [Notebooks](JUPYTER.md) - [ESP32S model](MODEL.md) - [**Summary**](SUMMARY.md)
 ***
 *Quick links :*
 [Home](/README.md) - [Part 1](../part1/README.md) - [Part 2](../part2/README.md) - [Part 3](../part3/README.md) - [**Part 4**](../part4/README.md)
