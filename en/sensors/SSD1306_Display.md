@@ -111,6 +111,8 @@ Save, compile and upload the sketch.  Once uploaded open up the Serial Monitor a
 
 You can see the temperature and humidity displayed on the Display Module
 
+![Display Module Output](../images/SSD1306-Display-Output.jpg)
+
 
 ### Step 4 - Load library and examples
 

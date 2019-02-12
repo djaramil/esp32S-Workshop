@@ -10,10 +10,9 @@
 
 ## OLED LCD LED Display Module for Arduino
 
-- Lab: [**Example application to use Display**](SSD1306_Display.md)
+- Lab: [**Example application to use SSD1306 display**](SSD1306_Display.md)
 
-
-## Add more stuffs here
+## Add more sensors here
 
 - Lab [**Sensor x**](SENSORx.md)
 
