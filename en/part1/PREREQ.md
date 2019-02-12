@@ -107,14 +107,14 @@ Select *Tools* -> *Board:* -> *Board Manager...* from the menu, then enter ESP i
 
 ### Step 4 - Install the filesystem upload tool for ESP32S
 
-The ESP32S has flash memory that can hold a filesystem.  There is a plugin for Arduino that allows you to generate a populated filesystem and upload it to the ESP32S board.  The plugin can be downloaded from [**here**](https://github.com/esp8266/arduino-esp8266fs-plugin).  You need to create a tools directory within the sketch directory then extract the content there.
+The ESP32S has flash memory that can hold a filesystem.  There is a plugin for Arduino that allows you to generate a populated filesystem and upload it to the ESP32S board.  The plugin can be downloaded from [**here**](https://github.com/ESP32S/arduino-ESP32Sfs-plugin).  You need to create a tools directory within the sketch directory then extract the content there.
 (*Note: Not sure if this part works with ESP32S*)
 
 ![tools directory](../images/toolsDirectory.png)
 
  (*Note: you can find the sketch directory location from the preferences panel of the Arduino IDE*).  The default location of the sketch directory is:
 
-- Linux - **/home/< user name >/Arduino/tools/esp8266fs**
+- Linux - **/home/< user name >/Arduino/tools/ESP32Sfs**
 - MacOS - **/Users/< user name >/Documents/Arduino/tools/esp8266fs**
 - Windows - **C:\Users\< user name >\Documents\Arduino\tools\esp8266fs**
 

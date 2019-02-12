@@ -48,7 +48,7 @@
         "ruleId": "",
         "deviceId": "",
         "applicationId": "",
-        "deviceType": "ESP8266",
+        "deviceType": "ESP32S",
         "eventType": "status",
         "commandType": "",
         "format": "json",

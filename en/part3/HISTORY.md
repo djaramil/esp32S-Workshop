@@ -37,7 +37,7 @@ The previous section stored the Device environment sensor data into a Cloudant D
 ### Step 3 - Historian Charts of Device Environmental Sensor data
 
 - Turn to the Node-RED Dashboard browser tab, click on the menu tab in the upper left corner, and select the Historical Data tab.
-- On the Historical Data dashboard, click on the **LOAD ESP8266 DHT DATA** button to start the data visualization.
+- On the Historical Data dashboard, click on the **LOAD ESP32S DHT DATA** button to start the data visualization.
 - The button will trigger the read of the historian DB records created in the previous section.
 - In the *Create a Chart Array for Chart.js* function node the time series temperature data from the Device Environmental sensor is formatted into a Chart Array and sorted chronologically.
 - The Chart Array is passed to the Node-RED Chart node to render the graph.
