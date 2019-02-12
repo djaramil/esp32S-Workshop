@@ -8,6 +8,10 @@
 
 - Lab: [**Example application to use ultrasonic sensor**](ESP32S+Neopixel-LED+HC-SR04.md)
 
+## Pyroelectric Infrared PIR
+
+- Lab: [**Example application to use Pyroelectric Infrared PIR sensor**](ESP32S+Neopixel-LED+PIR.md)
+
 ## Human heart / pulse sensor
 
 - Lab: [**Example application to use pulse sensor**](PULSE+RGB.md)
