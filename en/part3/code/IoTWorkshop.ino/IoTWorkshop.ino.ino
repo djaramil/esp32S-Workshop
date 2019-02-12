@@ -1,5 +1,5 @@
 #include <FS.h>
-#include <ESP8266WiFi.h>
+#include <ESP32SWiFi.h>
 #include <time.h>
 #include <Adafruit_NeoPixel.h>
 #include <DHT.h>
@@ -47,7 +47,7 @@
 char ssid[] = "<SSID>";  // your network SSID (name)
 char pass[] = "<PASSWORD>";  // your network password
 
-// Model parameters from part4 - to implement the model on the ESP8266
+// Model parameters from part4 - to implement the model on the ESP32S
 // Replace these parameters with the model parameters from your Jupyter Notebook
 #define MODEL_INTERCEPT -14.172253183961212
 #define MODEL_TEMP_COEF -3.0625
@@ -129,7 +129,7 @@ void setup() {
   Serial.setTimeout(2000);
   while (!Serial) { }
   Serial.println();
-  Serial.println("ESP8266 Sensor Application");
+  Serial.println("ESP32S Sensor Application");
 
   // Start WiFi connection
   WiFi.mode(WIFI_STA);

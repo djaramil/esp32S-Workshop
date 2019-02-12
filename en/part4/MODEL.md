@@ -1,14 +1,14 @@
 *Quick links :*
 [Home](/README.md) - [Part 1](../part1/README.md) - [Part 2](../part2/README.md) - [Part 3](../part3/README.md) - [**Part 4**](../part4/README.md)
 ***
-**Part 4** - [Watson Studio](STUDIO.md) - [Training Data](TRAINING.md) - [Notebooks](JUPYTER.md) - [**ESP8266 model**](MODEL.md) - [Summary](SUMMARY.md)
+**Part 4** - [Watson Studio](STUDIO.md) - [Training Data](TRAINING.md) - [Notebooks](JUPYTER.md) - [**ESP32S model**](MODEL.md) - [Summary](SUMMARY.md)
 ***
 
-# Run the model on the ESP8266 device
+# Run the model on the ESP32S device
 
 ## Learning Objectives
 
-In this section you will learn how to take the model parameters generated in the previous section and implement a function to run the model on the ESP8266 to provide real-time classification.
+In this section you will learn how to take the model parameters generated in the previous section and implement a function to run the model on the ESP32S to provide real-time classification.
 
 ## Logistic regression
 
@@ -28,7 +28,7 @@ so the first coefficient is the weighting for the humidity property and the seco
 
 The sigmoid function is: ```f(x) = 1/(1+e^-x)```
 
-Given the two functions we can create an implementation in C that can be integrated with our ESP8266 application:
+Given the two functions we can create an implementation in C that can be integrated with our ESP32S application:
 
 ```C
 #include <math.h>
@@ -45,9 +45,9 @@ float applyModel(float h, float t) {
 }
 ```
 
-## Incorporating real-time classification on the ESP8266
+## Incorporating real-time classification on the ESP32S
 
-Now we have a function that applies the trained model that can be implemented in C on the ESP8266, we can incorporate the result into our code.
+Now we have a function that applies the trained model that can be implemented in C on the ESP32S, we can incorporate the result into our code.
 
 Each time new readings are made we can call the ```applyModel()``` function.  The output of the function will be a floating point number where numbers nearest 0.0 represent class 0 in our training data and numbers nearest 1.0 represent class 1 in our training scenario.  A simple comparison assigning results less than 0.5 to class 0 and results above 0.5 to class 1 is all that is needed to assign a set of readings to a class.
 
@@ -62,11 +62,11 @@ float modelPrediction = applyModel(h, t);
 status["class"] = modelPrediction < 0.5 ? 0 : 1;
 ```
 
-The completed ESP8266 application should now look like:
+The completed ESP32S application should now look like:
 
 ```C
 #include <FS.h>
-#include <ESP8266WiFi.h>
+#include <WiFi.h>
 #include <time.h>
 #include <Adafruit_NeoPixel.h>
 #include <DHT.h>
@@ -114,7 +114,7 @@ The completed ESP8266 application should now look like:
 char ssid[] = "<SSID>";  // your network SSID (name)
 char pass[] = "<PASSWORD>";  // your network password
 
-// Model parameters from part4 - to implement the model on the ESP8266
+// Model parameters from part4 - to implement the model on the ESP32S
 // Replace these parameters with the model parameters from your Jupyter Notebook
 #define MODEL_INTERCEPT -14.172253183961212
 #define MODEL_TEMP_COEF -3.0625
@@ -196,7 +196,7 @@ void setup() {
   Serial.setTimeout(2000);
   while (!Serial) { }
   Serial.println();
-  Serial.println("ESP8266 Sensor Application");
+  Serial.println("ESP32S Sensor Application");
 
   // Start WiFi connection
   WiFi.mode(WIFI_STA);
@@ -342,7 +342,7 @@ void loop() {
 ```
 
 ***
-**Part 4** - [Watson Studio](STUDIO.md) - [Training Data](TRAINING.md) - [Notebooks](JUPYTER.md) - [**ESP8266 model**](MODEL.md) - [Summary](SUMMARY.md)
+**Part 4** - [Watson Studio](STUDIO.md) - [Training Data](TRAINING.md) - [Notebooks](JUPYTER.md) - [**ESP32S model**](MODEL.md) - [Summary](SUMMARY.md)
 ***
 *Quick links :*
-[Home](/README.md) - [Part 1](../part1/README.md) - [Part 2](../part2/README.md) - [Part 3](../part3/README.md) - [**Part 4**](../part4/README.md)
+[Home](/README.md) - [Part 1](../part1/README.md) - [Part 2](../part2/README.md) - [Part 3](../part3/README.md) - [**Part 4**](../part4/README.md) - [Sensors](/en/sensors/README.md)

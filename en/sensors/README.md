@@ -12,9 +12,9 @@
 
 - Lab: [**Example application to use pulse sensor**](PULSE+RGB.md)
 
-## LCD Display
+## OLED LCD Display Module for Arduino
 
-- Lab: [**Example application to use LCD Display**](LCD.md)
+- Lab: [**Example application to use SSD1306 display**](SSD1306_Display.md)
 
 ## Add more sensors here
 
@@ -22,4 +22,4 @@
 
 ***
 *Quick links :*
-[Home](/README.md) - [Part 1](../part1/README.md) - [**Part 2**](../part2/README.md) - [Part 3](../part3/README.md) - [Part 4](../part4/README.md) - [**Sensors**](../sensors/README.md)
+[Home](/README.md) - [Part 1](../part1/README.md) - [Part 2](../part2/README.md) - [Part 3](../part3/README.md) - [Part 4](../part4/README.md) - [**Sensors**](../sensors/README.md)
