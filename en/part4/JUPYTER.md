@@ -23,7 +23,7 @@ The steps below will build up the Jupyter notebook, there is a solution notebook
 
 ## Step 1 - Cloudant Credentials
 
-Before we can read the ESP8266 IoT temperature and humidity data into a Jupyter notebook we need to create credentials for the Cloudant database where the training data is stored.
+Before we can read the ESP32S IoT temperature and humidity data into a Jupyter notebook we need to create credentials for the Cloudant database where the training data is stored.
 
 - Open a new browser tab.
 - Return to the [IBM Cloud dashboard](https://cloud.ibm.com) and your IoT Starter application. **Click** on the cloudantNoSQLDB service connection (1). ![Cloudant NoSQL Service Connection](../part3/screenshots/CloudantNoSQLServiceConnection.png)
@@ -166,7 +166,7 @@ model = pipeline.fit(df)
 result = model.transform(df)
 ```
 
-- Once the model is trained we need to extract the model parameters (coefficients and the intercept values in the case of logistic regression), so we can implement the model on the ESP8266.  You will need these values for the next part of the workshop, so make a note of them now:
+- Once the model is trained we need to extract the model parameters (coefficients and the intercept values in the case of logistic regression), so we can implement the model on the ESP32S.  You will need these values for the next part of the workshop, so make a note of them now:
 
 ```python
 model.stages[1].coefficients
@@ -214,7 +214,7 @@ spark.sql("select humidity, temp, prediction from result").show(50)
 There is a sample solution for this part provided in the [notebooks](notebooks) folder.  If you have an issue and want to see the solution then within the IoT Sensor Analytics project select to add a new notebook.  Select to create a notebook from file and give the notebook a name - here **IoT Sensor Analytics - solution** has been used.  This assumes you have the file locally on your machine.  Select choose file and locate the **IoT Sensor Analytics.ipynb** file.  Finally ensure you have the Default Spark Python 3.5 XS runtime selected then press **Create Notebook**
   ![Import solution](screenshots/WatsonStudio-import-solution.png)
 
-Alternatively, you can select to import from URL and set the URL to : [https://raw.githubusercontent.com/binnes/esp8266Workshop/master/en/part4/notebooks/IoT%20Sensor%20Analytics.ipynb](https://raw.githubusercontent.com/binnes/esp8266Workshop/master/en/part4/notebooks/IoT%20Sensor%20Analytics.ipynb)
+Alternatively, you can select to import from URL and set the URL to : [https://raw.githubusercontent.com/djaramil/ESP32S-Workshop/master/en/part4/notebooks/IoT%20Sensor%20Analytics.ipynb](https://raw.githubusercontent.com/djaramil/ESP32S-Workshop/master/en/part4/notebooks/IoT%20Sensor%20Analytics.ipynb)
 
 ***
 **Part 4** - [Watson Studio](STUDIO.md) - [Training Data](TRAINING.md) - [**Notebooks**](JUPYTER.md) - [ESP32S model](MODEL.md) - [Summary](SUMMARY.md)

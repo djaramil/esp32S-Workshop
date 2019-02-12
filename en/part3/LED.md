@@ -57,10 +57,10 @@ This section will build a Node-RED flow where you can change the LED color and t
 
 ![Node-RED Dashboard Form flow node](screenshots/Node-RED-SetLED-IoTnode.png)
 
-### Step 5 - Inspect ESP8266 program which handles Display Device Commands
+### Step 5 - Inspect ESP32S program which handles Display Device Commands
 
 - Return to the Arduino IDE
-- The prior section already deployed the updated program to your ESP8266 and included the code to handle *display* commands to set the RGB LED colors.
+- The prior section already deployed the updated program to your ESP32S and included the code to handle *display* commands to set the RGB LED colors.
 - Inspect the section of code that sets the LED colors.
 
 ***

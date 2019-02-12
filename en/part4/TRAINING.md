@@ -70,7 +70,7 @@ This flow creates the following output, which we will write to the database:
 
 To create the training data you may want to use the interval dashboard to set the interval to something like 5 seconds, to reduce the time needed to gather the required data.  We are aiming to have a similar number of data points for each class in the training data.
 
-1. Ensure the ESP8266 is working and you can see the debug output as shown above.
+1. Ensure the ESP32S is working and you can see the debug output as shown above.
 2. As we want to record class 0 data, leave the DHT sensor alone and wait 30 seconds to ensure the data is stable.  Then connect up the **cloudant out** node and deploy the flow: ![flow collecting data](screenshots/nr-flow-collecting.png)
 3. Wait until about 20-30 records have been written then delete the connection to the **cloudant out** node and deploy the flow to stop any more records being written: ![nodered flow](screenshots/nr-flow-not-collecting.png)
 4. Edit the **change** node configuration to set the class to 1 : ![change class 1](screenshots/nr-change-class-1.png)
