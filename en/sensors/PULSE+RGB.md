@@ -21,13 +21,13 @@ You will learn:
 Parts in this lab:
 
 - ESP32S (36 pins)
-- Human Heart Rate / Pulse sensor (pulsesensor.com)
+- Human Heart Rate / Pulse sensor. Visit https://pulsesensor.com/ to have more details about the sensor, including getting started and playground library.
 - Neo Pixel 8mm 
 - male-male Jumpers
 
 ### Step 1 - Wire the parts together
 
-First you need to wire the part together on a breadboard. Here is the diagram of the example
+First you need to wire the part together on a breadboard. Here is the circuit diagram of the example
 
 ![ESP32S pulse wiring](../images/ESP32S+Pulse+Neopixel-LED.png)
 
