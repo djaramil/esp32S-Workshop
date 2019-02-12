@@ -21,13 +21,13 @@ You will learn:
 Parts in this lab:
 
 - ESP32S (36 pins)
-- Human Heart Rate / Pulse sensor (pulsesensor.com)
+- Human Heart Rate / Pulse sensor. Visit https://pulsesensor.com/ to have more details about the sensor, including getting started and playground library.
 - Neo Pixel 8mm 
 - male-male Jumpers
 
 ### Step 1 - Wire the parts together
 
-First you need to wire the part together on a breadboard. Here is the diagram of the example
+First you need to wire the part together on a breadboard. Here is the circuit diagram of the example
 
 ![ESP32S pulse wiring](../images/ESP32S+Pulse+Neopixel-LED.png)
 
@@ -112,6 +112,11 @@ The LED should be set to a colour based on the pulse value and the threashold se
 You can see the graphical view of the pulse output by opening the Serial Plottter view (Remember to close the Serial Monitor view first): Tool >> Serial Plotter
 
 ![Serial Plotter](../images/Pulse-output.png)
+
+To see how the LED changes colors based on the pulse value, tighten the `touch` side of the sensor to your finger. You can change the threshold values (NORMAL, WARN, ALERT) in the code to test. Click the picture below to see
+
+[![Heart sensor](../images/pulse-cover-image.png)](https://www.youtube.com/watch?v=-i0oZmwVW2M "Heart sensor")
+
 
 ### Step 4 - Load PulseSensor Playground library and examples
 
