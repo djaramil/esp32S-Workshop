@@ -1,5 +1,5 @@
 *Quick links :*
-[Home](/README.md) - [Part 1](/en/part1/README.md) - [Part 2](/en/part2/README.md) - [Part 3](/en/part3/README.md) - [Part 4](/en/part4/README.md) - [Sensors](/en/sensors/README.md)
+[**Home**](/README.md) - [Part 1](/en/part1/README.md) - [Part 2](/en/part2/README.md) - [Part 3](/en/part3/README.md) - [Part 4](/en/part4/README.md) - [Sensors](/en/sensors/README.md)
 ***
 
 # Welcome to the ESP32S IoT Workshop
@@ -36,4 +36,4 @@ Timing of the day can be found in the [**agenda**](/en/AGENDA.md)
 We've provided all the links used throughout the workshop as well as links to other resources [**here**](/en/RESOURCES.md) to help you explore a little more about IoT.
 ***
 *Quick links :*
-[Home](/README.md) - [Part 1](/en/part1/README.md) - [Part 2](/en/part2/README.md) - [Part 3](/en/part3/README.md) - [Part 4](/en/part4/README.md) - [Sensors](/en/sensors/README.md)
+[**Home**](/README.md) - [Part 1](/en/part1/README.md) - [Part 2](/en/part2/README.md) - [Part 3](/en/part3/README.md) - [Part 4](/en/part4/README.md) - [Sensors](/en/sensors/README.md)
