@@ -57,17 +57,6 @@ uint16_t r = 0; // LED RED value
 uint16_t g = 0; // LED Green value
 uint16_t b = 0; // LED Blue value
 
-void randRGB()
-{
-  r=random(0,255);
-  g=random(0,255);
-  b=random(0,255);
-  Serial.printf("rgb=%d,%d,%d\n",r,g,b);
-  // Set RGB LED Colour
-  pixel.setPixelColor(0, r, g, b);
-  pixel.show();
-}
-
 // defines pins numbers for HC SR04 Sensor
 const int trigPin = 23; // TRIGGER PIN
 const int echoPin = 22; // ECHO PIN
