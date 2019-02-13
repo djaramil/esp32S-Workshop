@@ -45,8 +45,8 @@
 #define TZ_DST    60  //Minutes timezone offset for Daylight saving
 
 // Add WiFi connection information
-char ssid[] = "DuyiPhone";  // your network SSID (name)
-char pass[] = "100310100310";  // your network password
+char ssid[] = "<SSID>";  // your network SSID (name)
+char pass[] = "<PASSWORD>";  // your network password
 
 // Model parameters from part4 - to implement the model on the ESP32S
 // Replace these parameters with the model parameters from your Jupyter Notebook
