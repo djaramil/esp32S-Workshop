@@ -97,7 +97,7 @@ This section will build a Node-RED Dashboard Form where you can enter a new repo
 - Launch the Serial Monitor from the Arduino IDE - *Tools -> Serial Monitor*
 - Watch the Reporting Interval loop
 - Change the reporting frequency in the Node-RED Dashboard Form.
-- In this screenshot the Reporting Interval was changed from 10 to 5 to 2 and the frequency that the environmental data was sent increased.
+- In this screenshot the Reporting Interval was changed from 10 to 30 and the frequency that the environmental data was sent increased.
 
 ![Arduino Serial Monitor](screenshots/ArduinoSerialMonitor.png)
 

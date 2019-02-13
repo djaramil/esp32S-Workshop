@@ -55,14 +55,14 @@ The next Node-RED flow - **Dashboard Intro** - uses a variety of UI widgets to d
 Now that you have learned about Node-RED Dashboard and Chart types, you are ready to plot the real-time device environmental sensor data.
 
 - Turn to the next flow - **Plot DHT Sensor Data**
-- The **IBM IoT** node is already configured to receive *status* Device Events from the ESP8266 Device Type.
+- The **IBM IoT** node is already configured to receive *status* Device Events from the ESP32S Device Type.
 - The **Change** nodes extract the ```msg.payload.d.temp``` and ```msg.payload.d.humidity``` values from the JSON object sent over MQTT from the device environmental sensor to Watson IoT Platform.
 - The environmental sensor values are sent to two charts to plot Temperature and Humidity.
- ![NRD ESP8266 DHT chart flow](screenshots/Node-RED-Dashboard-DHT-flow.png)
-- Turn to the Node-RED Dashboard browser tab that you launched in Step 2, click on the tab in the upper left corner, and select the **ESP8266 Workshop** tab.
+ ![NRD ESP32S DHT chart flow](screenshots/Node-RED-Dashboard-DHT-flow.png)
+- Turn to the Node-RED Dashboard browser tab that you launched in Step 2, click on the tab in the upper left corner, and select the **ESP32S Workshop** tab.
 
 <p align="center">
-<img height="395" width="282" src="screenshots/NRD-ESP8266-DHT-TempHum-Chart.png">
+<img height="395" width="282" src="screenshots/NRD-ESP32S-DHT-TempHum-Chart.png">
 </p>
 
 ### Step 5 - Trigger Alerts when Real-Time Sensor Data Exceeds a Threshold Value
@@ -75,12 +75,12 @@ Often IoT devices and sensors are deployed so that alerts can be triggered when 
 - The Alert message is sent to a **Node-RED Dashboard Notification** node to display in the browser.
 - This flow could be extended to call a **Twilio** node to send a SMS message.  It could raise an alarm in another system by triggering a REST API call to the manufacturing production operations systems.
 
- ![NRD ESP8266 DHT chart flow](screenshots/Node-RED-Dashboard-DHT-flow.png)
+ ![NRD ESP32S DHT chart flow](screenshots/Node-RED-Dashboard-DHT-flow.png)
 
-- Return to the Node-RED Dashboard **ESP8266 Workshop** tab and increase the temperature of your DHT sensor above 30C.
+- Return to the Node-RED Dashboard **ESP32S Workshop** tab and increase the temperature of your DHT sensor above 30C.
 
  <p align="center">
- <img height="395" width="282" src="screenshots/NRD-ESP8266-DHT-TempHum-ChartAlert.png">
+ <img height="395" width="282" src="screenshots/NRD-ESP32S-DHT-TempHum-ChartAlert.png">
  </p>
 
 ***

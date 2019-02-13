@@ -1,7 +1,8 @@
 #include <FS.h>
-#include <ESP32SWiFi.h>
+#include <WiFi.h>
 #include <time.h>
 #include <Adafruit_NeoPixel.h>
+#include <WiFiClientSecure.h>
 #include <DHT.h>
 #include <ArduinoJson.h>
 #include <PubSubClient.h>
@@ -12,11 +13,11 @@
 // --------------------------------------------------------------------------------------------
 
 // Watson IoT connection details
-#define MQTT_HOST "<orgID>.messaging.internetofthings.ibmcloud.com"
+#define MQTT_HOST "myiygh.messaging.internetofthings.ibmcloud.com"
 #define MQTT_PORT 8883
-#define MQTT_DEVICEID "d:<orgID>:<type>:<id>"
+#define MQTT_DEVICEID "d:myiygh:ESP32S:dev01"
 #define MQTT_USER "use-token-auth"
-#define MQTT_TOKEN "<token>"
+#define MQTT_TOKEN "token"
 #define MQTT_TOPIC "iot-2/evt/status/fmt/json"
 #define MQTT_TOPIC_DISPLAY "iot-2/cmd/display/fmt/json"
 #define MQTT_TOPIC_INTERVAL "iot-2/cmd/interval/fmt/json"
@@ -44,8 +45,8 @@
 #define TZ_DST    60  //Minutes timezone offset for Daylight saving
 
 // Add WiFi connection information
-char ssid[] = "<SSID>";  // your network SSID (name)
-char pass[] = "<PASSWORD>";  // your network password
+char ssid[] = "DuyiPhone";  // your network SSID (name)
+char pass[] = "100310100310";  // your network password
 
 // Model parameters from part4 - to implement the model on the ESP32S
 // Replace these parameters with the model parameters from your Jupyter Notebook
@@ -146,7 +147,7 @@ void setup() {
   pixel.begin();
 
   // Get cert(s) from file system
-  SPIFFS.begin();
+/*  SPIFFS.begin();
   File ca = SPIFFS.open(CA_CERT_FILE, "r");
   if(!ca) {
     Serial.println("Couldn't load CA cert");
@@ -173,10 +174,10 @@ void setup() {
     Serial.print("Loading cert returned ");
     Serial.println((ret)? "true" : "false");
     cert.close();
-  }
+  }*/
 
   // Set time from NTP servers
-  configTime(TZ_OFFSET * 3600, TZ_DST * 60, "pool.ntp.org", "0.pool.ntp.org");
+/*  configTime(TZ_OFFSET * 3600, TZ_DST * 60, "pool.ntp.org", "0.pool.ntp.org");
   Serial.println("\nWaiting for time");
   unsigned timeout = 5000;
   unsigned start = millis();
@@ -190,18 +191,18 @@ void setup() {
   delay(1000); // Wait for time to fully sync
   Serial.println("Time sync'd");
   time_t now = time(nullptr);
-  Serial.println(ctime(&now));
+  Serial.println(ctime(&now));*/
   
   // Connect to MQTT - IBM Watson IoT Platform
    while(! mqtt.connected()){
     if (mqtt.connect(MQTT_DEVICEID, MQTT_USER, MQTT_TOKEN)) { // Token Authentication
 //    if (mqtt.connect(MQTT_DEVICEID)) { // No Token Authentication
-      if (wifiClient.verifyCertChain(MQTT_HOST)) {
+/*      if (wifiClient.verifyCertChain(MQTT_HOST)) {
         Serial.println("certificate matches");
       } else {
         // ignore for now - but usually don't want to proceed if a valid cert not presented!
         Serial.println("certificate doesn't match");
-      }
+      }*/
       Serial.println("MQTT Connected");
       mqtt.subscribe(MQTT_TOPIC_DISPLAY);
       mqtt.subscribe(MQTT_TOPIC_INTERVAL);
