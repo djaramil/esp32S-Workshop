@@ -23,7 +23,7 @@ Node.js application that provides a visual programming editor that makes it easy
 ### Step 1 - Node-RED Visual Programming
 
 Recall that in Part 1, you created a IoT Starter Application. Once the Green **Running** icon appears, click the **View App URL** button (1)
-![IBM Cloud screenshot](screenshots/ESP8266-IoTStarter.png)
+![IBM Cloud screenshot](screenshots/ESP32S-IoTStarter.png)
 
 ### Step 2 - How to secure your Node-RED Editor in IBM Cloud
 
@@ -47,6 +47,8 @@ A new browser tab will open to the Node-RED start page. Proceed through the setu
 ![IoT Starter Flow 1](screenshots/IoTStarter-DeleteFlow1-c.png)
 
 ### Step 3 - How to install additional Node-RED nodes
+
+To install additional Node-RED nodes, you may need to login to the application by select the `User` Icon at the top right to login with the credentials created in Step 2
 
 - The IoT Starter Application deployed into IBM Cloud includes just a small subset of Node-RED nodes. The Node-RED palette can be extended with over one thousand additional nodes for different devices and functionality. These NPM nodes can be browsed at <http://flows.nodered.org>
 - In this Step, you will add the **Node-RED Dashboard** nodes to your Internet of Things Starter Application.

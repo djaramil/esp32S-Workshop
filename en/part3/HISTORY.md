@@ -32,7 +32,7 @@ The previous section stored the Device environment sensor data into a Cloudant D
 
 - The Historical Chart flow reads the IoT Sensor Device data from the Cloudant database and formats it into a Chart array before sending the data to a Node-RED Chart node.
 
-![Node-RED Historian Flow](screenshots/NRD-ESP8266-DHT-TempHistorian-flow.png)
+![Node-RED Historian Flow](screenshots/NRD-ESP32S-DHT-TempHistorian-flow.png)
 
 ### Step 3 - Historian Charts of Device Environmental Sensor data
 
@@ -42,7 +42,7 @@ The previous section stored the Device environment sensor data into a Cloudant D
 - In the *Create a Chart Array for Chart.js* function node the time series temperature data from the Device Environmental sensor is formatted into a Chart Array and sorted chronologically.
 - The Chart Array is passed to the Node-RED Chart node to render the graph.
 
-![Node-RED Historian Flow](screenshots/NRD-ESP8266-DHT-TempHistorian-Chart.png)
+![Node-RED Historian Flow](screenshots/NRD-ESP32S-DHT-TempHistorian-Chart.png)
 
 ***
 **Part 3** - [Intro to Node-RED](NODERED.md) - [Receive Sensor Data](DHTDATA.md) - [Plot Data](DASHBOARD.md) - [Store Data](CLOUDANT.md) - [**Historical Data**](HISTORY.md) - [Control Interval](INTERVAL.md) - [Control LED](LED.md)

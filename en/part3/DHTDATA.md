@@ -23,10 +23,10 @@ In just a few nodes, Node-RED can receive the data that was transmitted from the
 - From the Input category of the left Node-RED palette, select an **ibmiot node** and drag it onto your Node-RED flow (1).
 - Double-click on the IBM IoT node. An **Edit ibmiot in node** sidebar will open.
 - Configure the Authentication dropdown to **Bluemix Service** (2).
-- Uncheck All and set the Device Type to **ESP8266** (3).
+- Uncheck All and set the Device Type to **ESP32S** (3).
 - Uncheck All and set the Event **status** (4).
 - Click on the red **Done** button.
- ![Receive DHT Data](screenshots/ESP8266-ReceiveDHTdata-IoTnode.png)
+ ![Receive DHT Data](screenshots/ESP32S-ReceiveDHTdata-IoTnode.png)
 
 ### Step 2 - Extract the Temperature from the JSON Object
 
@@ -40,7 +40,7 @@ In just a few nodes, Node-RED can receive the data that was transmitted from the
 - Double-click on the Change node. An **Edit change node** sidebar will open.
 - Configure the "to" AZ dropdown to msg. and set it to *payload.d.temp* (6).
 - Click on the red **Done** button.
- ![Receive DHT Data](screenshots/ESP8266-ReceiveDHTdata-Changenode.png)
+ ![Receive DHT Data](screenshots/ESP32S-ReceiveDHTdata-Changenode.png)
 
 ## Step 3 - Node-RED Debug Nodes
 
@@ -49,14 +49,14 @@ In just a few nodes, Node-RED can receive the data that was transmitted from the
 - Double-click on one of them. An **Edit debug node** sidebar will open.
 - Configure the Output to print the *complete msg object* (8).
 - Click on the red **Done** button.
- ![Receive DHT Data](screenshots/ESP8266-ReceiveDHTdata-Debugnode.png)
+ ![Receive DHT Data](screenshots/ESP32S-ReceiveDHTdata-Debugnode.png)
 
 ### Step 4 - Wire the Node-RED nodes together
 
 - Wire the Node-RED nodes together by click / dragging your mouse from nodelet to nodelet as show in the screenshot.
 - Click on the red **Deploy** button in the upper right corner.
   - Observe the DHT sensor data in the **debug** tab of the Node-RED right sidebar.  You can expand the twisties to expose the JSON object information. Hover over a debug message in the right sidebar and the node that generated the message will be outlined in orange.
-  ![Receive DHT Data](screenshots/ESP8266-ReceiveDHTdata-Deploy.png)
+  ![Receive DHT Data](screenshots/ESP32S-ReceiveDHTdata-Deploy.png)
 
 ***
 **Part 3** - [Intro to Node-RED](NODERED.md) - [**Receive Sensor Data**](DHTDATA.md) - [Plot Data](DASHBOARD.md) - [Store Data](CLOUDANT.md) - [Historical Data](HISTORY.md) - [Control Interval](INTERVAL.md) - [Control LED](LED.md)
