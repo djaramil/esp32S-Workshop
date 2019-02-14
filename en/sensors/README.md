@@ -20,6 +20,10 @@
 
 - Lab: [**Example application to use SSD1306 display**](SSD1306_Display.md)
 
+## GY-291 ADXL345 3-Axis Digital Acceleration of Gravity Tilt Module for Arduino
+
+- Lab: [**Example application to use ADXL345**](GY-291 ADXL345 Gyroscope.md)
+
 ## Add more sensors here
 
 - Lab: [**Sensor x**](SENSORx.md)
