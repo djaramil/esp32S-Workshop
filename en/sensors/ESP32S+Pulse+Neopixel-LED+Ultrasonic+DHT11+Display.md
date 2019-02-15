@@ -34,7 +34,7 @@ First you need to wire the part together on a breadboard. Here is the diagram of
 
 ![ESP32S ultrasonic sensor wiring](../images/ESP32S+Pulse+Neopixel-LED+Ultrasonic+DHT11+Display.png)
 
-GPIO 5 is used to control the LED colors. Data pin (blue) of the Pyroelectric Infrared PIR sensor is connected to analog pin GPIO 21.
+GPIO 5 is used to control the LED colors. DHT 11 (green) sensor is connected to GPIO pin 26. SDA pin of display module SSD 1306 (maroon) is connected to GPIO pin 21. SCL pin of display module SSD 1306 (purple) is connected to GPIO pin 22. TRIG pin of Ultrasonic Sensor HC-SR04 (yellow) is connected to GPIO pin 17. ECHO pin of Ultrasonic Sensor HC-SR04 (cyan) is connected to GPIO pin 16. Pulse sensor (brown) is connected to Analog pin 0 (GPIO 36).
 
 ### Step 2 - Input the application code
 
@@ -201,7 +201,9 @@ The LED should be set to a colour based on the motion value.
 
 You can see the graphical view of the pulse output by opening the Serial Plottter view (Remember to close the Serial Monitor view first): Tool >> Serial Plotter
 
-![Serial Plotter](../images/ESP32S+Neopixel-LED+PIR-output.png)
+![Output 1](../images/ESP32S+Pulse+Neopixel-LED+Ultrasonic+DHT11+Display-output-1.jpg)
+
+![Output 2](../images/ESP32S+Pulse+Neopixel-LED+Ultrasonic+DHT11+Display-output-2.jpg)
 
 ***
 **Sensor labs: ** [Sensor](README.md) - [Ultrasonic Sensor](ESP32S+Neopixel-LED+HC-SR04.md) - [Pyroelectric Infrared PIR Sensor](ESP32S+Neopixel-LED+PIR.md) - [Heart sensor](PULSE+RGB.md) - [OLED LCD Display Module](SSD1306_Display.md)

@@ -6,7 +6,7 @@
 **Sensor labs: ** [Sensor](README.md) - [Ultrasonic Sensor](ESP32S+Neopixel-LED+HC-SR04.md) - [Pyroelectric Infrared PIR Sensor](ESP32S+Neopixel-LED+PIR.md) - [Heart sensor](PULSE+RGB.md) - [OLED LCD Display Module](SSD1306_Display.md)
 ***
 
-This part contains instruction to get started with Human Heart Rate/Pulse sensor on ESP32S
+This part contains instruction to get started with Ultrasonic HC-SR04 sensor on ESP32S
 
 ## Lab Objectives
 
