@@ -22,7 +22,7 @@
 
 ## GY-291 ADXL345 3-Axis Digital Acceleration of Gravity Tilt Module for Arduino
 
-- Lab: [**Example application to use ADXL345**](GY-291 ADXL345 Gyroscope.md)
+- Lab: [**Example application to use ADXL345**](GY-291_ADXL345_Gyroscope.md)
 
 ## Add more sensors here
 
