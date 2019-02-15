@@ -24,6 +24,10 @@
 
 - Lab: [**Example application to use ADXL345**](GY-291_ADXL345_Gyroscope.md)
 
+## Whopper Sensor with ESP 32S
+
+- Lab: [**Example application Whopper Sensor with ESP 32S**](ESP32S+Pulse+Neopixel-LED+Ultrasonic+DHT11+Display.md)
+
 ## Add more sensors here
 
 - Lab: [**Sensor x**](SENSORx.md)
