@@ -1,5 +1,5 @@
 *Quick links :*
-[Home](/README.md) - [Part 1](../part1/README.md) - [Part 2](../part2/README.md) - [Part 3](../part3/README.md) - [Part 4](../part4/README.md)
+[Home](/README.md) - [Part 1](../part1/README.md) - [Part 2](../part2/README.md) - [Part 3](../part3/README.md) - [Part 4](../part4/README.md)  - [Sensors](/en/sensors/README.md)
 ***
 
 # Resources
@@ -19,8 +19,11 @@ Development options:
 Some additional links:
 
 - [ESP8266 pinout](https://circuits4you.com/2017/12/31/nodemcu-pinout/)
+- [ESP32S pinout](http://forum.fritzing.org/t/esp32s-hiletgo-dev-boad-with-pinout-template/5357)
 - <https://en.wikipedia.org/wiki/ESP8266>
 - <https://en.wikipedia.org/wiki/NodeMCU>
+- <https://en.wikipedia.org/wiki/ESP32>
+- <https://www.espressif.com/en/products/hardware/esp32/overview>
 
 ## IBM Cloud and Internet of Things Resources
 
@@ -39,4 +42,4 @@ Some additional links:
 
 ***
 *Quick links :*
-[Home](/README.md) - [Part 1](../part1/README.md) - [Part 2](../part2/README.md) - [Part 3](../part3/README.md) - [Part 4](../part4/README.md)
+[Home](/README.md) - [Part 1](../part1/README.md) - [Part 2](../part2/README.md) - [Part 3](../part3/README.md) - [**Part 4**](../part4/README.md) - [Sensors](/en/sensors/README.md)

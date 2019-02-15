@@ -1,5 +1,5 @@
 *Quick links :*
-[Home](/README.md) - [Part 1](/en/part1/README.md) - [Part 2](/en/part2/README.md) - [Part 3](/en/part3/README.md) - [Part 4](/en/part4/README.md)
+[Home](/README.md) - [Part 1](/en/part1/README.md) - [Part 2](/en/part2/README.md) - [Part 3](/en/part3/README.md) - [Part 4](/en/part4/README.md) - [Sensors](/en/sensors/README.md)
 ***
 
 # Translating the ESP8266 IoT Workshop
@@ -34,4 +34,4 @@ Here are some pointer to be aware of before proceeding:
 
 ***
 *Quick links :*
-[Home](/README.md) - [Part 1](/en/part1/README.md) - [Part 2](/en/part2/README.md) - [Part 3](/en/part3/README.md) - [Part 4](/en/part4/README.md)
+[Home](/README.md) - [Part 1](/en/part1/README.md) - [Part 2](/en/part2/README.md) - [Part 3](/en/part3/README.md) - [Part 4](/en/part4/README.md) - [Sensors](/en/sensors/README.md)
