@@ -120,7 +120,30 @@ To see how the LED changes colors based on the pulse value, tighten the `touch` 
 
 ### Step 4 - Load PulseSensor Playground library and examples
 
-To see how to use the Pulse sensor in more advanced ways, there are some useful sketch examples that you can load into your IDE.  *Tools* -> *Manage Libraries* -> *Search for Pulse Sensor Playground* -> *Install*. After that, you can load an example from *File* -> *Examples* -> *PulseSensor Playgound* and select from the list.
+To see how to use the Pulse sensor in more advanced ways, there are some useful sketch examples that you can load into your IDE.  *Tools* -> *Manage Libraries* -> *Search for Pulse Sensor Playground* -> *Install*. After that, you can load an example from *File* -> *Examples* -> *PulseSensor Playgound* and select the example from the list which may best fit your needs.
+
+Notes:
+
+Currently the PulseSensor Playgound code won't compile on ESP32. You will get some error like this when compile the code (on MACOS)
+
+```
+Users/<user>/Documents/Arduino/libraries/PulseSensor_Playground/src/utility/PulseSensor.cpp: In member function 'void PulseSensor::initializeLEDs()':
+/Users/<user>/Documents/Arduino/libraries/PulseSensor_Playground/src/utility/PulseSensor.cpp:215:27: error: 'analogWrite' was not declared in this scope
+```
+
+The error is because the ESP32 does not use the `analogWrite` function. Since the `analogWrite` is not critical to the function of the code, you can just simply open `/Users/<user>/Documents/Arduino/libraries/PulseSensor_Playground/src/utility/PulseSensor.cpp` , comment out these 2 lines in the `PulseSensor.cpp` file for now until the library owner releases a fix for it:
+
+```
+    //analogWrite(FadePin, 0); // turn off the LED.
+```
+
+and 
+
+```
+    //analogWrite(FadePin, FadeLevel / FADE_SCALE);
+```
+
+You can see the source code of the library here: https://github.com/WorldFamousElectronics/PulseSensorPlayground
 
 ***
 **Sensor labs: ** [Sensor](README.md) - [Ultrasonic Sensor](ESP32S+Neopixel-LED+HC-SR04.md) - [Pyroelectric Infrared PIR Sensor](ESP32S+Neopixel-LED+PIR.md) - [**Heart sensor**](PULSE+RGB.md) - [OLED LCD Display Module](SSD1306_Display.md) - [GY-291 ADXL345 Gravity Tilt Module](GY-291_ADXL345_Gyroscope.md) 
