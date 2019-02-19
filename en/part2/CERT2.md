@@ -19,64 +19,87 @@ In this lab you will extend the application by enabling client side certificates
 The openssl tool must be used to generate the key and certificate, as in the previous lab.  You need to work in the same directory as you did in the previous lab, as the commands below need access to the rootCA_certificate.pem file.  If you altered the root CA key password, then remember to change the value in the commands shown below:
 
 ```bash
-openssl genrsa -aes256 -passout pass:password123 -out SecuredDev01_key.pem 2048
+openssl genrsa -aes256 -out SecuredDev01_key.pem 2048
 
-openssl req -new -sha256 -subj "/C=GB/ST=DOR/L=Bournemouth/O=z53u40/OU=z53u40 Corporate/CN=d:ESP32S:dev01" -passin pass:password123 -key SecuredDev01_key.pem -out SecuredDev01_crt.csr
+openssl req -new -sha256 -subj "/C=GB/ST=DOR/L=Bournemouth/O=z53u40/OU=z53u40 Corporate/CN=d:ESP32S:dev01" -key SecuredDev01_key.pem -out SecuredDev01_crt.csr
 
 openssl x509 -days 3650 -in SecuredDev01_crt.csr -out SecuredDev01_crt.pem -req -sha256 -CA rootCA_certificate.pem -passin pass:password123 -CAkey rootCA_key.pem -set_serial 131
 
-openssl rsa -outform der -in SecuredDev01_key.pem -passin pass:password123 -out SecuredDev01_key.key
-
-openssl x509 -outform der -in SecuredDev01_crt.pem -out SecuredDev01_crt.der
 ```
 
-### Step 2 - Upload the certificate and key to the ESP32S device
+### Step 2 - Get the device cert, key and CA cert content and Fingerprint
 
-You need to add the private key (SecuredDev01_key.key) and the certificate (SecuredDev01_crt.der) to the data folder inside the sketch folder then run the data uploader tool (*Tools* -> *ESP32S Sketch Data Upload*) to install the certificates on the device filesystem.
+Open rootCA_certificate.pem, SecuredDev01_key.pem and SecuredDev01_crt.pem using a text editor and get their text content to be used later in the code in Step 3
+
+For Fingerprint, run this command:
+
+```bash
+openssl s_client -servername MQTT_HOST -connect MQTT_HOST:8883 < /dev/null 2>/dev/null | openssl x509 -fingerprint -sha256 -noout -in /dev/stdin
+```
+Check what MQTT_HOST in [MQTT](/MQTT.md) part
 
 ### Step 3 - Modify the application to use the client certificate and key
 
 Now you can modify the code to load the certificates and add them to the connection:
 
-Add two mode #define statements containing the names of the key and certificate:
+
+Update the code within the setup() function to set the certificates and key.
 
 ```C++
-#define KEY_FILE "/SecuredDev01_key.key"
-#define CERT_FILE "/SecuredDev01_crt.der"
-```
+// This is an example of how you hardcode the cert
+const char* ca = \
+"-----BEGIN CERTIFICATE-----\n" \
+"MIIDdzCCAl+gAwIBAgIBATANBgkqhkiG9w0BAQsFADB2MQswCQYDVQQGEwJHQjEM\n" \
+"MAoGA1UECAwDRE9SMRQwEgYDVQQHDAtCb3VybmVtb3V0aDEPMA0GA1UECgwGejUz\n" \
+"dTQwMRkwFwYDVQQLDBBteWl5Z2ggQ29ycG9yYXRlMRcwFQYDVQQDDA5teWl5Z2gg\n" \
+"Um9vdCBDQTAeFw0xOTAyMTYwNDExMzVaFw0yODExMTUwNDExMzVaMHYxCzAJBgNV\n" \
+"BAYTAkdCMQwwCgYDVQQIDANET1IxFDASBgNVBAcMC0JvdXJuZW1vdXRoMQ8wDQYD\n" \
+"VQQKDAZ6NTN1NDAxGTAXBgNVBAsMEG15aXlnaCBDb3Jwb3JhdGUxFzAVBgNVBAMM\n" \
+"Dm15aXlnaCBSb290IENBMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA\n" \
+"szKLiVvQL9AfXopquOJ1q4CCUFUcttvQH84TvtsrtaBLUt7VZ3JZphe9ne6iA9S9\n" \
+"gjFpqlNp3S+1QrIF9LhyJwJNzo/2S8n8QPZsrl7knx1WXi2P0HKxEuHovCArUawZ\n" \
+"JqbseVaE/9HOf7Iz941aDXMagIG1c37GjpMSqHp8g5Fk7X6H64UoHjrOcoqqKYg0\n" \
+"851UbCzUEusxpdrjx4Ld6iZ2qztVtjgfrp5f7EL7O2O7DVWdZ4U0l8O8TbRHGDMs\n" \
+"aliD9/NPSZ6lVa1h9RrDZVbyxzzyLp1NmmU2s+EJcAUQVK08B+ScT7vjd64pLuY9\n" \
+"hQSrsRKwcteV77Xc2nmTcwIDAQABoxAwDjAMBgNVHRMEBTADAQH/MA0GCSqGSIb3\n" \
+"DQEBCwUAA4IBAQA6A9riroV72HW2HhAHM3MrcKmaxCnb5f2eBjWHzVvFJLtc5TsU\n" \
+"JbtSDKXwCyrPvSHl1VwuKoAmZFFgGJKmNi8vbCq7kOgVfv640egm2TcHfvayUyT+\n" \
+"APNx6YRKhato0iKfOXbsfqd1gryk7lSBiKoOHlUg0xAL432IeOvasq1D8Exzv8+h\n" \
+"48uk+hW6Ms0FT+Wwd8MBsAwmMyQqjYFGLv2CCJs1i8eSUIAu+9IAQSAVMQ38M6WF\n" \
+"jxf0I09fwK/814fKnCBmW5DQLeC8/AHkno161NOua+h7+DKOEsHoAA/K9K2yGO8t\n" \
+"+zQ8mEcSen/LQoBxc/A5x3nUHrmRe8wcvws4\n" \
+"-----END CERTIFICATE-----\n" ;
 
-then update the code within the setup() function to load the additional key and certificate:
+const char* key = \
+"<Key content goes here similar to ca>";
 
-```C++
-// Get certs from file system and load into WiFiSecure client
-  SPIFFS.begin();
-  File ca = SPIFFS.open(CA_CERT_FILE, "r");
-  if(!ca) {
-    Serial.println("Couldn't load CA cert");
-  } else {
-    bool ret = wifiClient.loadCACert(ca);
-    Serial.print("Loading CA cert returned ");
-    Serial.println((ret)? "true" : "false");
-    ca.close();
+const char* cert = \
+"<Cert content goes here similar to ca>";
+
+ // Start serial console
+  Serial.begin(115200);
+  Serial.setTimeout(2000);
+  while (!Serial) { }
+  Serial.println();
+  Serial.println("ESP32S Sensor Application");
+
+  // Start WiFi connection
+  WiFi.mode(WIFI_STA);
+  WiFi.begin(ssid, pass);
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
   }
-  File key = SPIFFS.open(KEY_FILE, "r");
-  if(!key) {
-    Serial.println("Couldn't load key");
-  } else {
-    bool ret = wifiClient.loadPrivateKey(key);
-    Serial.print("Loading key returned ");
-    Serial.println((ret)? "true" : "false");
-    key.close();
-  }
-  File cert = SPIFFS.open(CERT_FILE, "r");
-  if(!cert) {
-    Serial.println("Couldn't load cert");
-  } else {
-    bool ret = wifiClient.loadCertificate(cert);
-    Serial.print("Loading cert returned ");
-    Serial.println((ret)? "true" : "false");
-    cert.close();
-  }
+  Serial.println("");
+  Serial.println("WiFi Connected");
+
+  // Start connected devices
+  dht.begin();
+  pixel.begin();
+
+  wifiClient.setCACert(ca);
+  wifiClient.setPrivateKey(key);
+  wifiClient.setCertificate(cert);
 ```
 
 ### Step 4 - Run the application
@@ -89,7 +112,7 @@ You now have client certificates working with the device, so can now choose how 
 
 - TLS Optional
 - TLS with Token Authentication
-- TLS with Client Certificate Authentication
+- TLS with Client Certificate Authentication (This option is used for the example code)
 - TLS with Client Certificate AND Token Authentication
 - TLS with Client Certificate OR Token Authentication
 
@@ -106,7 +129,9 @@ The finished application should look like this:
 
 ```C++
 #include <FS.h>
+#include <SPIFFS.h>
 #include <WiFi.h>
+#include <WiFiClientSecure.h>
 #include <time.h>
 #include <Adafruit_NeoPixel.h>
 #include <DHT.h>
@@ -116,7 +141,6 @@ The finished application should look like this:
 // --------------------------------------------------------------------------------------------
 //        UPDATE CONFIGURATION TO MATCH YOUR ENVIRONMENT
 // --------------------------------------------------------------------------------------------
-
 // Watson IoT connection details
 #define MQTT_HOST "z53u40.messaging.internetofthings.ibmcloud.com"
 #define MQTT_PORT 8883
@@ -125,10 +149,6 @@ The finished application should look like this:
 #define MQTT_TOKEN "password"
 #define MQTT_TOPIC "iot-2/evt/status/fmt/json"
 #define MQTT_TOPIC_DISPLAY "iot-2/cmd/display/fmt/json"
-#define CA_CERT_FILE "/rootCA_certificate.der"
-#define KEY_FILE "/SecuredDev01_key.key"
-#define CERT_FILE "/SecuredDev01_crt.der"
-
 // Add GPIO pins used to connect devices
 #define RGB_PIN 5 // GPIO pin the data line of RGB LED is connected to
 #define DHT_PIN 4 // GPIO pin the data line of the DHT sensor is connected to
@@ -148,8 +168,8 @@ The finished application should look like this:
 #define TZ_DST    60  //Minutes timezone offset for Daylight saving
 
 // Add WiFi connection information
-char ssid[] = "SSID";     //  your network SSID (name)
-char pass[] = "WiFi_password";  // your network password
+char ssid[] = "duyhard";     //  your network SSID (name)
+char pass[] = "YouPassWord";  // your network password
 
 
 // --------------------------------------------------------------------------------------------
@@ -188,6 +208,37 @@ void callback(char* topic, byte* payload, unsigned int length) {
 }
 
 void setup() {
+
+// This is an example of how you hardcode the cert
+const char* ca = \
+"-----BEGIN CERTIFICATE-----\n" \
+"MIIDdzCCAl+gAwIBAgIBATANBgkqhkiG9w0BAQsFADB2MQswCQYDVQQGEwJHQjEM\n" \
+"MAoGA1UECAwDRE9SMRQwEgYDVQQHDAtCb3VybmVtb3V0aDEPMA0GA1UECgwGejUz\n" \
+"dTQwMRkwFwYDVQQLDBBteWl5Z2ggQ29ycG9yYXRlMRcwFQYDVQQDDA5teWl5Z2gg\n" \
+"Um9vdCBDQTAeFw0xOTAyMTYwNDExMzVaFw0yODExMTUwNDExMzVaMHYxCzAJBgNV\n" \
+"BAYTAkdCMQwwCgYDVQQIDANET1IxFDASBgNVBAcMC0JvdXJuZW1vdXRoMQ8wDQYD\n" \
+"VQQKDAZ6NTN1NDAxGTAXBgNVBAsMEG15aXlnaCBDb3Jwb3JhdGUxFzAVBgNVBAMM\n" \
+"Dm15aXlnaCBSb290IENBMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA\n" \
+"szKLiVvQL9AfXopquOJ1q4CCUFUcttvQH84TvtsrtaBLUt7VZ3JZphe9ne6iA9S9\n" \
+"gjFpqlNp3S+1QrIF9LhyJwJNzo/2S8n8QPZsrl7knx1WXi2P0HKxEuHovCArUawZ\n" \
+"JqbseVaE/9HOf7Iz941aDXMagIG1c37GjpMSqHp8g5Fk7X6H64UoHjrOcoqqKYg0\n" \
+"851UbCzUEusxpdrjx4Ld6iZ2qztVtjgfrp5f7EL7O2O7DVWdZ4U0l8O8TbRHGDMs\n" \
+"aliD9/NPSZ6lVa1h9RrDZVbyxzzyLp1NmmU2s+EJcAUQVK08B+ScT7vjd64pLuY9\n" \
+"hQSrsRKwcteV77Xc2nmTcwIDAQABoxAwDjAMBgNVHRMEBTADAQH/MA0GCSqGSIb3\n" \
+"DQEBCwUAA4IBAQA6A9riroV72HW2HhAHM3MrcKmaxCnb5f2eBjWHzVvFJLtc5TsU\n" \
+"JbtSDKXwCyrPvSHl1VwuKoAmZFFgGJKmNi8vbCq7kOgVfv640egm2TcHfvayUyT+\n" \
+"APNx6YRKhato0iKfOXbsfqd1gryk7lSBiKoOHlUg0xAL432IeOvasq1D8Exzv8+h\n" \
+"48uk+hW6Ms0FT+Wwd8MBsAwmMyQqjYFGLv2CCJs1i8eSUIAu+9IAQSAVMQ38M6WF\n" \
+"jxf0I09fwK/814fKnCBmW5DQLeC8/AHkno161NOua+h7+DKOEsHoAA/K9K2yGO8t\n" \
+"+zQ8mEcSen/LQoBxc/A5x3nUHrmRe8wcvws4\n" \
+"-----END CERTIFICATE-----\n" ;
+
+const char* key = \
+"<Key content goes here similar to ca>";
+
+const char* cert = \
+"<Cert content goes here similar to ca>";
+
  // Start serial console
   Serial.begin(115200);
   Serial.setTimeout(2000);
@@ -208,36 +259,12 @@ void setup() {
   // Start connected devices
   dht.begin();
   pixel.begin();
-
-  // Get certs from file system and load into WiFiSecure client
-  SPIFFS.begin();
-  File ca = SPIFFS.open(CA_CERT_FILE, "r");
-  if(!ca) {
-    Serial.println("Couldn't load CA cert");
-  } else {
-    bool ret = wifiClient.loadCACert(ca);
-    Serial.print("Loading CA cert returned ");
-    Serial.println((ret)? "true" : "false");
-    ca.close();
-  }
-  File key = SPIFFS.open(KEY_FILE, "r");
-  if(!key) {
-    Serial.println("Couldn't load key");
-  } else {
-    bool ret = wifiClient.loadPrivateKey(key);
-    Serial.print("Loading key returned ");
-    Serial.println((ret)? "true" : "false");
-    key.close();
-  }
-  File cert = SPIFFS.open(CERT_FILE, "r");
-  if(!cert) {
-    Serial.println("Couldn't load cert");
-  } else {
-    bool ret = wifiClient.loadCertificate(cert);
-    Serial.print("Loading cert returned ");
-    Serial.println((ret)? "true" : "false");
-    cert.close();
-  }
+ 
+  //Set certificates and key
+  wifiClient.setCACert(ca);
+  wifiClient.setPrivateKey(key);
+  wifiClient.setCertificate(cert);
+  
 
   // Set time from NTP servers
   configTime(TZ_OFFSET * 3600, TZ_DST * 60, "pool.ntp.org", "0.pool.ntp.org");
@@ -258,9 +285,10 @@ void setup() {
 
   // Connect to MQTT - IBM Watson IoT Platform
    while(! mqtt.connected()){
-    if (mqtt.connect(MQTT_DEVICEID, MQTT_USER, MQTT_TOKEN)) { // Token Authentication
-//    if (mqtt.connect(MQTT_DEVICEID)) { // No Token Authentication
-      if (wifiClient.verifyCertChain(MQTT_HOST)) {
+//    if (mqtt.connect(MQTT_DEVICEID, MQTT_USER, MQTT_TOKEN)) { // Token Authentication
+   if (mqtt.connect(MQTT_DEVICEID)) { // No Token Authentication
+    const char* fingerprint = "Fingerprint value from Step 2";
+      if (wifiClient.verify(fingerprint,MQTT_HOST)) {
         Serial.println("certificate matches");
       } else {
         // ignore for now - but usually don't want to proceed if a valid cert not presented!
