@@ -142,11 +142,11 @@ The finished application should look like this:
 //        UPDATE CONFIGURATION TO MATCH YOUR ENVIRONMENT
 // --------------------------------------------------------------------------------------------
 // Watson IoT connection details
-#define MQTT_HOST "myiygh.messaging.internetofthings.ibmcloud.com"
+#define MQTT_HOST "z53u40.messaging.internetofthings.ibmcloud.com"
 #define MQTT_PORT 8883
-#define MQTT_DEVICEID "d:myiygh:ESP32S:dev01"
+#define MQTT_DEVICEID "d:z53u40:ESP32S:dev01"
 #define MQTT_USER "use-token-auth"
-#define MQTT_TOKEN "AVkeU_eS!ucb+Mxb+u"
+#define MQTT_TOKEN "password"
 #define MQTT_TOPIC "iot-2/evt/status/fmt/json"
 #define MQTT_TOPIC_DISPLAY "iot-2/cmd/display/fmt/json"
 // Add GPIO pins used to connect devices
