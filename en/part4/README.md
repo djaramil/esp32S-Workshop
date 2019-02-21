@@ -26,7 +26,7 @@ This section shows you how to use the training data to create a model that can t
 
 ## Run the model on the ESP32S device
 
-This section takes the output from the Jupyter Notebook and implements the trained model on the ESP8266 device.
+This section takes the output from the Jupyter Notebook and implements the trained model on the ESP32S device.
 
 - practical [**Implement model on ESP32S**](MODEL.md)
 
